@@ -1,16 +1,19 @@
 <script>
 	import ReferalPill from '$lib/components/opprett-konto/ReferalPill.svelte';
 
-     let { children } = $props();
+	let { children } = $props();
 </script>
 
-<main class="max-h-screen h-screen">
-    <div class="h-full flex flex-col items-center">
-    <div class="grid grid-rows-[repeat(3, minmax(0, 0.2fr))] sm:grid-rows-3 max-h-full h-full max-w-md ">
-        <div class="flex flex-col items-center row-start-1 mt-10 mx-10 md:mx-0">
-            <ReferalPill name="Shahrukh" />
-        </div>
+<main class="h-screen max-h-screen">
+	<div class="flex h-full flex-col items-center">
+		<div
+			class="grid-rows-[repeat(3, minmax(0, 0.2fr))] grid h-full max-h-full max-w-md sm:grid-rows-5"
+		>
+			<div class="row-start-1 mx-10 mt-10 flex flex-col items-center md:mx-0">
+				<ReferalPill name="Shahrukh" />
+			</div>
 
-        {@render children()}
-    </div>
+			{@render children()}
+		</div>
+	</div>
 </main>
