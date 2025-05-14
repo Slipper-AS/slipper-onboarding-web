@@ -1,5 +1,6 @@
 <script lang="ts">
     import {ArrowRight, Zap, HandCoins, FileSearch, TrendingUpDown} from '@lucide/svelte/icons';
+    import { goto } from '$app/navigation';
 </script>
 
 <main>
@@ -13,7 +14,7 @@
                     <span class="text-warning-500">Jon</span> har invitert deg til Slipper
                 </h1>
                 <p class="text-left text-lg">Slipper er Norges første uavhengige strømbytte-app - laget av forbrukere, for forbrukere. Last ned i dag og få se hvor mye du kan spare på å bytte til billigste strømavtale for deg.</p>
-                <button class="bg-secondary-500 hover:bg-secondary-600 flex justify-between items-center text-center rounded-full lg:w-sm lg-14 cursor-pointer py-3 px-5 mt-6">
+                <button onclick={() => goto('opprett-konto')} class="bg-secondary-500 hover:bg-secondary-600 flex justify-between items-center text-center rounded-full lg:w-sm lg-14 cursor-pointer py-3 px-5 mt-6">
                     <span class="flex-1 text-lg text-black">Kom i gang</span>
                     <span class="ml-auto text-black"> <ArrowRight class="size-7" /> </span>
                 </button>
@@ -66,7 +67,7 @@
                 <p class="mt-3 text-lg "> I Slipper bestemmer du! Foreslå funksjoner, stem på idéer og vær med å bygge appen strømselskapene håper du aldri får høre om...</p>
             </div>
         <div class=" flex flex-col lg:items-center">
-                <button class="bg-secondary-500 hover:bg-secondary-600 flex justify-between items-center text-center rounded-full lg:w-sm lg-14 cursor-pointer py-3 px-5 mt-6" >
+                <button  onclick={() => goto('opprett-konto')} class="bg-secondary-500 hover:bg-secondary-600 flex justify-between items-center text-center rounded-full lg:w-sm lg-14 cursor-pointer py-3 px-5 mt-6" >
                     <span class="flex-1 text-lg text-black">Kom i gang</span>
                     <span class="ml-auto text-black"> <ArrowRight/> </span>
                 </button>
