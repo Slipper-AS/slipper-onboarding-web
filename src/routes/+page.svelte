@@ -34,7 +34,7 @@
 		</section>
 
 		<section
-			class="section bg-primary-500 base-font-color flex w-full flex-col items-center justify-center space-y-10"
+			class="section bg-surface-500 base-font-color flex w-full flex-col items-center justify-center space-y-10"
 		>
 			<div class="flex flex-col items-center space-y-5">
 				<h1 class="h1 base-font-color text-3xl">
@@ -89,7 +89,7 @@
 			</div>
 			<div class=" flex flex-col lg:items-center">
 				<button
-					onclick={() => goto('opprett-konto')}
+					onclick={() => goto('opprett-konto/')}
 					class="bg-secondary-500 hover:bg-secondary-600 lg-14 mt-6 flex cursor-pointer items-center justify-between rounded-full px-5 py-3 text-center lg:w-sm"
 				>
 					<span class="flex-1 text-lg text-black">Kom i gang</span>

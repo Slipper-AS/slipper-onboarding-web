@@ -11,7 +11,9 @@
 		<span class="flex-1 text-lg"> Logg inn med Vipps</span>
 		<span class="ml-auto"> <ArrowRight class="size-7" /> </span>
 	</button>
-	<a href="/sms-login" class="self-center text-gray-300 underline">Har du ikke Vipps?</a>
+	<a href="opprett-konto/ny-bruker/telefonnummer" class="self-center text-gray-300 underline"
+		>Har du ikke Vipps?</a
+	>
 </div>
 
 <div class="row-start-6 mx-10 mb-10 flex flex-col justify-end md:mx-0">
