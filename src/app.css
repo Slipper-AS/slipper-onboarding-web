@@ -1,4 +1,5 @@
 @import 'tailwindcss';
+@plugin '@tailwindcss/forms';
 
 @import '@skeletonlabs/skeleton';
 @import '@skeletonlabs/skeleton/optional/presets';
@@ -8,5 +9,19 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 [data-theme='slipper-theme'] body {
-    margin: auto;
+	margin: auto;
+}
+
+[data-theme='slipper-theme'] .label-text {
+	display: block;
+	font-size: var(--text-base);
+	color: #d4d4d4 /* #000 */;
+	line-height: var(--text-md--line-height);
+	font-weight: var(--font-weight-normal);
+}
+
+[data-theme='slipper-theme'] input {
+	background-color: var(--color-tertiary-500);
+	padding-block: calc(var(--spacing) * 4);
+	padding-inline: calc(var(--spacing) * 5);
 }
