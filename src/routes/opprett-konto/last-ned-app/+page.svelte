@@ -37,7 +37,7 @@
 			<li class="mb-4">
 				<div class="flex items-center space-x-4">
 					<infoPoint.icon this={infoPoint.icon} class="text-secondary-500 size-6" />
-					<p class="text-sm text-gray-600">{infoPoint.description}</p>
+					<p class="text-sm">{infoPoint.description}</p>
 				</div>
 			</li>
 		{/each}
