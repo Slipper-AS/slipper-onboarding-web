@@ -7,7 +7,7 @@
 	<div class="flex flex-col items-center lg:mt-10 lg:space-y-15">
 		<section class="section grid grid-cols-1 items-center gap-5 lg:w-4xl">
 			<div class="col-start-1 flex justify-center lg:row-start-1 lg:justify-start">
-				<img src="Slipper-logo.png" alt="Slipper Logo" class="w-[10rem]" />
+				<img src="Slipper-logo.png" alt="Slipper Logo" class="w-[8rem]" />
 			</div>
 			<div class="col-start-1 flex flex-col space-y-5 lg:w-lg xl:w-xl">
 				<h1 class="h1 text-left text-3xl">
@@ -102,7 +102,7 @@
 
 <style>
 	.section {
-		padding: 2rem;
+		padding: 6rem 2rem;
 		text-align: center;
 		flex: 1;
 	}
