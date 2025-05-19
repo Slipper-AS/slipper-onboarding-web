@@ -37,13 +37,13 @@
 			<li class="mb-4">
 				<div class="flex items-center space-x-4">
 					<infoPoint.icon this={infoPoint.icon} class="text-secondary-500 size-6" />
-					<p class="text-sm">{infoPoint.description}</p>
+					<p class="text-base">{infoPoint.description}</p>
 				</div>
 			</li>
 		{/each}
 	</ul>
 	<button
-		class="bg-secondary-500 flex w-full items-center justify-between rounded-full px-4 py-3 text-black"
+		class="bg-secondary-500 hover:bg-secondary-600 flex w-full items-center justify-between rounded-full px-4 py-3 text-black"
 	>
 		<span class="flex-1 text-lg"> Last ned appen </span>
 		<span class="ml-auto"> <ArrowRight class="size-7" /> </span>

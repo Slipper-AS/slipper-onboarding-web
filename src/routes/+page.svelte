@@ -37,8 +37,8 @@
 			class="section bg-surface-500 base-font-color flex w-full flex-col items-center justify-center space-y-10"
 		>
 			<div class="flex flex-col items-center space-y-5">
-				<h1 class="h1 base-font-color text-3xl">
-					Appen som sørger for at du <br /> alltid har den billigste strømavtalen
+				<h1 class="h1 base-font-color text-2xl">
+					Appen som sørger for at du alltid har den billigste strømavtalen
 				</h1>
 				<div class="w-none lg:max-w-3xl">
 					<p class="base-font-color text-lg">
@@ -56,7 +56,7 @@
 				</div>
 				<div class="flex max-w-[190px] flex-col items-center space-y-2">
 					<FileSearch />
-					<h5 class="h5 base-font-color">Full Oversikt</h5>
+					<h5 class="h5 base-font-color">Full oversikt</h5>
 					<p class="text-md">Følg med på strømpriser og strømforbruk</p>
 				</div>
 				<div class="flex max-w-[190px] flex-col items-center space-y-2">
@@ -77,7 +77,7 @@
 				<img src="Paa-lag.png" alt="Paa Lag" class="max-w-[100px]" />
 			</div>
 			<div class="w-none col-start-1 flex flex-col justify-center lg:max-w-3xl">
-				<h1 class="h1 text-3xl">
+				<h1 class="h1 text-2xl">
 					Bli med å snu opp ned på strømbransjen <span class="inline-flex"
 						><Zap color="orange" fill="yellow" strokeWidth="1" /></span
 					>
