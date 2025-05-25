@@ -8,7 +8,7 @@
 	<button
 		class="bg-warning-500 flex w-full items-center justify-between rounded-full px-4 py-3 text-white"
 		on:click={() => {
-			window.location.href = 'https://api.slipper.no/accounts/oidc/vipps/login/';
+			window.location.href = 'https://api.slipper.no/accounts/oidc/vipps/login?type=web';
 		}}
 	>
 		<span class="flex-1 text-lg"> Logg inn med Vipps</span>
