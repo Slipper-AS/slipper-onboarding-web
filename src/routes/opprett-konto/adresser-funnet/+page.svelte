@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	import { goto } from '$app/navigation';
 	import { ArrowRight, Home } from '@lucide/svelte/icons';
 	// Dummy data for addresses
