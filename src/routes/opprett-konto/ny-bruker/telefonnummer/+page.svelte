@@ -21,7 +21,6 @@
 					name="phone"
 					class="w-full border-0 focus:border-0 focus:ring-0 focus:outline-none"
 					required
-					pattern="^\d{8}$"
 					bind:value={phone}
 				/>
 			</div>
