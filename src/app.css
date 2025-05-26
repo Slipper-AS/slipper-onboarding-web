@@ -8,6 +8,10 @@
 @source '../node_modules/@skeletonlabs/skeleton-svelte/dist';
 @custom-variant dark (&:where(.dark, .dark *));
 
+button {
+	@apply transition-colors duration-200 ease-in-out;
+}
+
 [data-theme='slipper-theme'] body {
 	margin: auto;
 }

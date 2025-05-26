@@ -19,7 +19,7 @@
 	</div>
 	<form method="POST">
 		<button
-			class="bg-secondary-500 flex w-full items-center justify-between rounded-full px-4 py-3 text-black"
+			class="bg-secondary-500 hover:bg-secondary-600 flex w-full items-center justify-between rounded-full px-4 py-3 text-black"
 			type="submit"
 		>
 			<span class="flex-1 text-lg"> Hent min strømdata</span>
