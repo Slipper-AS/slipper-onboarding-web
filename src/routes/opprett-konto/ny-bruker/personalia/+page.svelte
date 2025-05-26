@@ -1,5 +1,6 @@
-<script>
+<script lang="ts">
 	import { ArrowRight, User } from '@lucide/svelte/icons';
+	const pattern = '[0-9]{2}\/[0-9]{2}\/[0-9]{4}';
 </script>
 
 <div class="row-start-2 m-10 flex flex-col space-y-6 text-left md:mx-0">
@@ -7,7 +8,8 @@
 		<User class="text-secondary-500" />
 		<h1 class="text-3xl">Litt kort om deg</h1>
 	</div>
-	<form class="flex w-md flex-col">
+
+	<form method="POST" class="flex w-md flex-col">
 		<div class="mb-10 space-y-4">
 			<label class="label">
 				<span class="label-text"> Fornavn </span>
@@ -19,9 +21,19 @@
 			</label>
 			<label class="label">
 				<span class="label-text"> Fødselsdato </span>
-				<input type="date" id="dateOfBirth" name="dateOfBirth" class="input" required />
+				<input
+					class="input"
+					type="text"
+					id="dateOfBirth"
+					name="dateOfBirth"
+					required
+					placeholder="dd/mm/yyyy"
+					maxlength="10"
+					pattern={pattern}
+				/>
 			</label>
 		</div>
+
 		<button
 			class="bg-secondary-500 hover:bg-secondary-600 flex w-full items-center justify-between rounded-full px-4 py-3 text-black"
 		>
@@ -30,3 +42,10 @@
 		</button>
 	</form>
 </div>
+
+<style>
+	input::placeholder {
+		color: #ffffff;
+		opacity: 0.7;
+	}
+</style>
