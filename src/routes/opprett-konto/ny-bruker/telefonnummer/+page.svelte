@@ -1,11 +1,11 @@
-<script>
+<script lang="ts">
 	import { ArrowRight } from '@lucide/svelte/icons';
 </script>
 
 <div class="row-start-2 m-10 flex flex-col space-y-6 pb-20 text-left md:mx-0">
 	<h1 class="text-3xl">Logg inn med ditt telefonnummer</h1>
 	<p>Vi sender deg en kode på SMS</p>
-	<form class="flex flex-col space-y-4">
+	<form method="POST" class="flex flex-col space-y-4">
 		<label class="label">
 			<span class="label-text"> Telefonnummer </span>
 			<input type="tel" id="phone" name="phone" class="input" required />
