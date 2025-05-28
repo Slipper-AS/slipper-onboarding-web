@@ -1,5 +1,5 @@
-import type { Actions } from './$types';
-import { fail, redirect } from '@sveltejs/kit';
+import type { Actions } from './$types.js';
+import { fail } from '@sveltejs/kit';
 
 const GRAPHQL_ENDPOINT = 'https://api.slipper.no/graphql/';
 
@@ -8,8 +8,11 @@ export const actions: Actions = {
 		const formData = await request.formData();
 		const email = formData.get('email')?.toString();
 
+		const errors: Record<string, string> = {};
+
 		if (!email) {
-			return fail(400, { error: 'Alle felter er påkrevd.' });
+			errors.email = 'Ugyldig e-postadresse';
+			return fail(400, { errors });
 		}
 
 		const mutation = `
@@ -44,12 +47,12 @@ export const actions: Actions = {
 			const result = await response.json();
 
 			if (result.errors) {
-				console.error('GraphQL errors:', result.errors);
-				return fail(500, { error: 'Kunne ikke oppdatere bruker.' });
+				errors.result = 'Kunne ikke oppdatere bruker.';
+				return fail(500, { errors });
 			}
 		} catch (err) {
-			return fail(500, { error: 'Noe gikk galt' });
+			errors.result = 'Noe gikk galt';
+			return fail(500, { errors });
 		}
-		throw redirect(303, '/opprett-konto/legg-til-adresser');
 	},
 };

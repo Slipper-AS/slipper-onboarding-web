@@ -148,7 +148,7 @@
 			<label class="label">
 				<span class="label-text"> Fødselsdato </span>
 
-				<div class="input-wrapper">
+				<div class="relative">
 					<input
 						class="input"
 						class:border-red-500!={(attemptedSubmit && !dobValid) || form?.errors.dob}
@@ -184,6 +184,7 @@
 			class:opacity-90!={!firstnameValid || !dobValid || !lastnameValid}
 			class:bg-[#58585c]!={!firstnameValid || !dobValid || !lastnameValid}
 			class:text-white!={!firstnameValid || !dobValid || !lastnameValid}
+			class:cursor-help={!firstnameValid || !lastnameValid || !dobValid}
 			aria-disabled={!firstnameValid || !lastnameValid || !dobValid}
 			class="form-next-button"
 		>
@@ -214,10 +215,6 @@
 	.placeholder-overlay::before {
 		content: attr(data-filled);
 		color: transparent;
-	}
-
-	.input-wrapper {
-		position: relative;
 	}
 
 	.filled-mask {
