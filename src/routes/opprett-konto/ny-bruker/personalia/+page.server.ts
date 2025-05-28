@@ -1,5 +1,5 @@
 import type { Actions } from './$types';
-import { fail, redirect } from '@sveltejs/kit';
+import { error, fail, redirect } from '@sveltejs/kit';
 
 const GRAPHQL_ENDPOINT = 'https://api.slipper.no/graphql/';
 
@@ -8,17 +8,32 @@ export const actions: Actions = {
 		const formData = await request.formData();
 		const firstName = formData.get('firstname')?.toString();
 		const lastName = formData.get('lastname')?.toString();
-		const birthDate = formData.get('dateOfBirth')?.toString();
+		const birthDate = formData.get('dob')?.toString();
+
+		const errors: Record<string, string> = {};
 
 		if (!firstName || !lastName || !birthDate) {
-			return fail(400, { error: 'Alle felter er påkrevd.' });
+			if (!firstName || !(firstName.trim().length > 0 && /^[A-Za-zæøåÆØÅ\-]+$/.test(firstName))) {
+				errors.firstName = 'Ugyldig fornavn';
+			}
+			if (!lastName || !(lastName.trim().length > 0 && /^[A-Za-zæøåÆØÅ\-]+$/.test(lastName))) {
+				errors.lastName = 'Ugyldig etternavn';
+			}
+			if (!birthDate || !/^\d{1,2}\.\d{1,2}\.\d{4}$/.test(birthDate)) {
+				errors.dob = 'Ugyldig fødselsdato';
+			}
+			errors.firstname = 'Alle felter er påkrevd.';
+			errors.lastname = 'Alle felter er påkrevd.';
+			errors.dob = 'Alle felter er påkrevd.';
+			return fail(400, { errors });
 		}
 
 		// Parse dd/mm/yyyy
-		const [day, month, year] = birthDate.split('/');
+		const [day, month, year] = birthDate.split('.');
 
 		if (!day || !month || !year) {
-			return fail(400, { error: 'Ugyldig datoformat.' });
+			errors.dob = 'Ugyldig datoformat.';
+			return fail(400, { errors });
 		}
 
 		// Create ISO date string yyyy-mm-dd
@@ -65,11 +80,12 @@ export const actions: Actions = {
 
 			if (result.errors) {
 				console.error('GraphQL errors:', result.errors);
-				return fail(500, { error: 'Kunne ikke oppdatere bruker.' });
+				errors.result = 'Kunne ikke oppdatere bruker.';
+				return fail(500, { errors });
 			}
 		} catch (err) {
-			return fail(500, { error: 'Noe gikk galt' });
+			errors.result = 'Noe gikk galt';
+			return fail(500, { errors });
 		}
-		throw redirect(303, '/opprett-konto/ny-bruker/epost');
 	},
 };

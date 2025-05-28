@@ -59,7 +59,7 @@
 		{/if}
 
 		<button
-			class="bg-secondary-500 flex w-full items-center justify-between rounded-full px-4 py-3 text-black transition-colors disabled:bg-[#58585C] disabled:text-white"
+			class="form-next-button"
 			type="submit"
 			disabled={pinInput.value.length !== pinInput.maxLength}
 		>
