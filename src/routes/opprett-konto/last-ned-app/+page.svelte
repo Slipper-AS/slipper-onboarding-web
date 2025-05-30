@@ -45,7 +45,7 @@
 	}
 </script>
 
-<div class="row-start-2 m-10 flex flex-col space-y-6 text-left md:mx-0">
+<div class="row-start-3 -mt-25 flex flex-col space-y-6 text-left sm:row-start-2 md:mx-0">
 	<img src="/Last-ned-app.png" alt="iPhones" class="h-[272px] w-[240px] self-center" />
 	<h1 class="text-3xl">Last ned appen og ta smartere strømvalg</h1>
 	<ul>

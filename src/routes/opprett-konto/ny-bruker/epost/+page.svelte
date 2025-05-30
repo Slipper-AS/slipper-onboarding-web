@@ -12,7 +12,7 @@
 	let { form }: PageProps = $props();
 </script>
 
-<div class="row-start-2 m-10 flex flex-col space-y-6 text-left md:mx-0">
+<div class="row-start-3 m-10 flex flex-col space-y-6 text-left sm:row-start-2 md:mx-0">
 	<div class="flex items-center space-x-2">
 		<AtSign class="text-secondary-500" />
 		<h1 class="text-3xl">Din e-post</h1>
