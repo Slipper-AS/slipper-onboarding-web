@@ -41,7 +41,10 @@ export const load: PageServerLoad = async ({ params, cookies }: RequestEvent) =>
 		maxAge: 60 * 60 * 24 * 30,
 	});
 
+	const referrer = cookies.get('shortName');
+
 	return {
 		referrerShortName,
+		referrer,
 	};
 };
