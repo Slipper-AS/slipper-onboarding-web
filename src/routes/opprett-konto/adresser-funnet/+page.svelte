@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	import { goto } from '$app/navigation';
 	import { ArrowRight, Home } from '@lucide/svelte/icons';
 	// Dummy data for addresses
@@ -18,8 +18,8 @@
 	];
 </script>
 
-<div class="row-start-2 m-10 flex flex-col space-y-6 text-left md:mx-0">
-	<img src="/Happy-selfie-man.png" alt="Happy Selfie Man" class="h-[121px] w-[144px] self-center" />
+<div class="row-start-3 flex flex-col space-y-6 text-left sm:row-start-2 md:mx-0">
+	<img src="/Happy-dancing-man.png" alt="Happy Dancing Man" class="size-60 self-center" />
 	<h1 class="text-3xl">Bingo! Vi fant følgende adresser:</h1>
 	<ul>
 		{#each adresses as address}
