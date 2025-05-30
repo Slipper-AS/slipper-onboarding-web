@@ -6,6 +6,9 @@
 	<h1 class="text-3xl">Lag en konto og kom i gang</h1>
 	<p>Se hvilken strømavtale som er billigst for deg, og hvor mye du kan spare.</p>
 	<button
+		onclick={() => {
+			window.location.href = 'https://api.slipper.no/accounts/oidc/vipps/login?type=web';
+		}}
 		class="bg-warning-500 hover:bg-warning-600 flex w-full items-center justify-between rounded-full px-4 py-3 text-white transition duration-200"
 	>
 		<span class="flex-1 text-lg"> Logg inn med Vipps</span>
