@@ -4,7 +4,7 @@
 	let {
 		children,
 		data,
-	}: { children: () => any; data: { hasReferrer: boolean; refferer: string | null } } = $props();
+	}: { children: () => any; data: { hasReferrer: boolean; referrer: string | null } } = $props();
 </script>
 
 <main class="h-screen max-h-screen">
