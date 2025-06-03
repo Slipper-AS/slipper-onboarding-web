@@ -7,7 +7,7 @@
 		<AtSign class="text-secondary-500" />
 		<h1 class="text-3xl">Din e-post</h1>
 	</div>
-	<form class="flex w-md flex-col space-y-6">
+	<form method="POST" class="flex w-md flex-col space-y-6">
 		<label class="label">
 			<span class="label-text"> E-post </span>
 			<input type="email" id="email" name="email" class="input" required />
