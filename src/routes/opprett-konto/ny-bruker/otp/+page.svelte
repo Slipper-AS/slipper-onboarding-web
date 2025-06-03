@@ -19,7 +19,7 @@
 	let error = $state(false);
 </script>
 
-<div class="row-start-2 m-12 flex w-min flex-col space-y-6 text-left md:mx-0">
+<div class="row-start-3 m-12 flex w-min flex-col space-y-6 text-left sm:row-start-2 md:mx-0">
 	<h1 class="text-3xl">Tast inn koden sendt til <br />+47 {data.phone}</h1>
 
 	<form

@@ -2,7 +2,8 @@
 	import { ArrowRight } from '@lucide/svelte/icons';
 </script>
 
-<div class="row-start-3 m-10 flex flex-col space-y-6 text-left md:mx-0">
+<div class="row-start-3 flex flex-col space-y-6 text-left sm:row-start-2 md:mx-0">
+	<img src="/Happy-selfie-man.png" alt="Happy Selfie Man" class="h-[124px] w-[200px] self-center" />
 	<h1 class="text-3xl">Lag en konto og kom i gang</h1>
 	<p>Se hvilken strømavtale som er billigst for deg, og hvor mye du kan spare.</p>
 	<button

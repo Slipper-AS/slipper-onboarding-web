@@ -74,7 +74,7 @@
 	}
 </script>
 
-<div class="row-start-2 m-10 flex flex-col space-y-6 text-left md:mx-0">
+<div class="row-start-3 m-10 flex flex-col space-y-6 text-left sm:row-start-2 md:mx-0">
 	<div class="flex items-center space-x-2">
 		<User class="text-secondary-500" />
 		<h1 class="text-3xl">Litt kort om deg</h1>
