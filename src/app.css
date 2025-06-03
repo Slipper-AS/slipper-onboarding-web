@@ -29,3 +29,28 @@ button {
 	padding-block: calc(var(--spacing) * 4);
 	padding-inline: calc(var(--spacing) * 5);
 }
+
+[data-theme='slipper-theme'] .form-next-button {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	border-radius: calc(infinity * 1px);
+	padding-inline: calc(var(--spacing) * 4);
+	padding-block: calc(var(--spacing) * 3);
+	color: var(--color-black);
+	transition:
+		background-color 0.2s ease-in-out,
+		color 0.2s ease-in-out;
+	width: 100%;
+	background-color: var(--color-secondary-500);
+
+	&:hover:valid {
+		background-color: var(--color-secondary-600);
+	}
+
+	&:disabled {
+		background-color: #58585c;
+		color: var(--color-white);
+		opacity: 0.9;
+	}
+}

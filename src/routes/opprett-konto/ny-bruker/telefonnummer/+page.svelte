@@ -25,10 +25,7 @@
 				/>
 			</div>
 		</label>
-		<button
-			class="bg-secondary-500 valid:hover:bg-secondary-600 flex w-full items-center justify-between rounded-full px-4 py-3 text-black transition-colors disabled:bg-[#58585c] disabled:text-white disabled:opacity-90"
-			disabled={!phoneIsValid}
-		>
+		<button class="form-next-button" type="submit" disabled={!phoneIsValid}>
 			<span class="flex-1 text-lg"> Fortsett </span>
 			<span class="ml-auto"> <ArrowRight class="size-7" /> </span>
 		</button>
