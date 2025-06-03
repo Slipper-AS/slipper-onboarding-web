@@ -1,5 +1,15 @@
-<script>
-	import { ArrowRight, AtSign } from '@lucide/svelte/icons';
+<script lang="ts">
+	import { enhance } from '$app/forms';
+	import { goto } from '$app/navigation';
+	import { ArrowRight, AtSign, AlertCircle } from '@lucide/svelte/icons';
+	import type { PageProps } from './$types.js';
+
+	let email = $state('');
+	let emailValid = $derived(email.trim().length > 0 && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email));
+
+	let attemptedSubmit = $state(false);
+
+	let { form }: PageProps = $props();
 </script>
 
 <div class="row-start-2 m-10 flex flex-col space-y-6 text-left md:mx-0">
@@ -7,14 +17,53 @@
 		<AtSign class="text-secondary-500" />
 		<h1 class="text-3xl">Din e-post</h1>
 	</div>
-	<form method="POST" class="flex w-md flex-col space-y-6">
+	<form
+		use:enhance={async (event) => {
+			attemptedSubmit = true;
+
+			if (!emailValid) {
+				event.cancel();
+			}
+
+			return async ({ result }) => {
+				if (result.type === 'success') {
+					goto('/opprett-konto/legg-til-adresser');
+				}
+			};
+		}}
+		method="POST"
+		class="flex w-md flex-col space-y-6"
+	>
 		<label class="label">
 			<span class="label-text"> E-post </span>
-			<input type="email" id="email" name="email" class="input" required />
+			<div class="relative">
+				<input
+					type="email"
+					id="email"
+					name="email"
+					class="input"
+					bind:value={email}
+					oninput={() => (attemptedSubmit = false)}
+				/>
+				{#if (attemptedSubmit && !emailValid) || form?.errors.email}
+					<AlertCircle
+						class="pointer-events-none absolute top-1/2 right-5 size-6 -translate-y-1/2 text-red-500"
+					/>
+				{/if}
+			</div>
+			{#if (attemptedSubmit && !emailValid) || form?.errors?.email}
+				<p class=" text-sm text-red-500">Ugyldig e-post</p>
+			{/if}
 		</label>
 
 		<button
-			class="bg-secondary-500 hover:bg-secondary-600 flex w-full items-center justify-between rounded-full px-4 py-3 text-black"
+			class="form-next-button"
+			type="submit"
+			class:opacity-90!={!emailValid}
+			class:bg-[#58585c]!={!emailValid}
+			class:text-white!={!emailValid}
+			class:cursor-help={!emailValid}
+			aria-disabled={!emailValid}
 		>
 			<span class="flex-1 text-lg"> Fortsett </span>
 			<span class="ml-auto"> <ArrowRight class="size-7" /> </span>

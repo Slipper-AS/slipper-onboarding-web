@@ -1,5 +1,5 @@
-import type { Actions } from './$types';
-import { error, fail, redirect } from '@sveltejs/kit';
+import type { Actions } from './$types.js';
+import { fail } from '@sveltejs/kit';
 
 const GRAPHQL_ENDPOINT = 'https://api.slipper.no/graphql/';
 
