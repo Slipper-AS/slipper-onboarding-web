@@ -7,6 +7,8 @@ export const load: PageServerLoad = ({ cookies }: import('@sveltejs/kit').Reques
 	const phone = cookies.get('otp_phone');
 
 	if (!phone) {
+		//Should never happen, should have better error handling
+		//Change to a 404 page later
 		throw redirect(303, 'opprett-konto/ny-bruker/telefonnummer');
 	}
 
@@ -18,10 +20,6 @@ export const actions: Actions = {
 		const phone = cookies.get('otp_phone');
 		const formData = await request.formData();
 		const code = formData.getAll('otp[]').join('');
-
-		if (!/^\d{6}$/.test(code)) {
-			return fail(400, { error: 'Ugyldig kode' });
-		}
 
 		const loginMutation = `mutation mymutatation($number: String!, $code:Int!) {
         smsLogin(number: $number, code: $code, lang: "no") {
@@ -45,7 +43,6 @@ export const actions: Actions = {
 		});
 
 		const data = await response.json();
-		console.log('Response from GraphQL:', data);
 		const bearerToken = data.data.smsLogin.token;
 
 		if (bearerToken) {
@@ -57,7 +54,5 @@ export const actions: Actions = {
 				maxAge: 60 * 60,
 			});
 		}
-		// On success:
-		throw redirect(303, '/opprett-konto/ny-bruker/personalia');
 	},
 };
