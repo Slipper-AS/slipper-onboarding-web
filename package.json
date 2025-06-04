@@ -67,6 +67,7 @@
 	],
 	"dependencies": {
 		"@lucide/svelte": "^0.509.0",
+		"lottie-web": "^5.13.0",
 		"melt": "^0.30.1"
 	}
 }
