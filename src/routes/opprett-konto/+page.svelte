@@ -8,7 +8,11 @@
 	<p>Se hvilken strømavtale som er billigst for deg, og hvor mye du kan spare.</p>
 	<button
 		onclick={() => {
-			window.location.href = 'https://api.slipper.no/accounts/oidc/vipps/login?type=web';
+			if (import.meta.env.DEV) {
+				window.location.href = 'https://api.slipper.no/login/vipps?type=local';
+			} else {
+				window.location.href = 'https://api.slipper.no/login/vipps?type=web';
+			}
 		}}
 		class="bg-warning-500 hover:bg-warning-600 flex w-full items-center justify-between rounded-full px-4 py-3 text-white transition duration-200"
 	>
