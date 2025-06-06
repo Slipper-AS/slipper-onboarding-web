@@ -32,7 +32,7 @@
 		const userAgent = navigator.userAgent;
 
 		const isAndroid = /android/i.test(userAgent);
-		const isIOS = /iPad|iPhone|iPod/.test(userAgent) && !window.MSStream;
+		const isIOS = /iPad|iPhone|iPod/.test(userAgent) && !('MSStream' in window);
 
 		if (isAndroid) {
 			window.location.href = 'https://play.google.com/store/apps/details?id=no.slipper.app&hl=no';
@@ -45,14 +45,15 @@
 	}
 </script>
 
-<div class="row-start-3 -mt-25 flex flex-col space-y-6 text-left sm:row-start-2 md:mx-0">
-	<img src="/Last-ned-app.png" alt="iPhones" class="h-[272px] w-[240px] self-center" />
+<div class="row-start-3 mx-10 -mt-25 flex flex-col space-y-6 text-left sm:row-start-2 md:mx-0">
+	<img src="/Last-ned-app.png" alt="iPhones" class="size-60 self-center" />
 	<h1 class="text-3xl">Last ned appen og ta smartere strømvalg</h1>
 	<ul>
 		{#each slipperInfo as infoPoint}
+			{@const Icon = infoPoint.icon}
 			<li class="mb-4">
 				<div class="flex items-center space-x-4">
-					<infoPoint.icon this={infoPoint.icon} class="text-secondary-500 size-6" />
+					<Icon class="text-secondary-500 size-6" />
 					<p class="text-base">{infoPoint.description}</p>
 				</div>
 			</li>
@@ -60,6 +61,7 @@
 	</ul>
 	<button
 		class="bg-secondary-500 hover:bg-secondary-600 flex w-full items-center justify-between rounded-full px-4 py-3 text-black"
+		on:click={handleDownload}
 	>
 		<span class="flex-1 text-lg"> Last ned appen </span>
 		<span class="ml-auto"> <ArrowRight class="size-7" /> </span>
