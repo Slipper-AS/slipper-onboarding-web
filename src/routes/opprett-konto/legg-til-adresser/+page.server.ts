@@ -8,8 +8,8 @@ export const actions: Actions = {
 
 		const redirectUrl =
 			import.meta.env.MODE === 'development'
-				? 'https://localhost:5173/opprett-konto/adresser-funnet'
-				: 'https://slipper.no/opprett-konto/adresser-funnet';
+				? 'https://localhost:3000/opprett-konto/adresser'
+				: 'https://slipper.no/opprett-konto/adresser';
 
 		const mutation = `
         mutation {
@@ -32,7 +32,6 @@ export const actions: Actions = {
 		});
 
 		const result = await response.json();
-		console.log('result', result);
 		const requestUrl = result?.data?.elhub?.requestUrl;
 
 		if (!requestUrl) {

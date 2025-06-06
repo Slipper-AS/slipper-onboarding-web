@@ -6,11 +6,13 @@
 		animationData = null,
 		loop = true,
 		autoplay = true,
+		classname = null,
 	} = $props<{
 		src?: string | null;
 		animationData?: object | null;
 		loop?: boolean;
 		autoplay?: boolean;
+		classname?: string | null;
 	}>();
 
 	let container: HTMLDivElement | undefined = $state();
@@ -30,4 +32,4 @@
 	});
 </script>
 
-<div class:animate-fade-in-once={animation?.isLoaded} bind:this={container}></div>
+<div class={classname} class:animate-fade-in-once={animation?.isLoaded} bind:this={container}></div>
