@@ -1,17 +1,23 @@
 <script lang="ts">
 	import { ArrowRight, Zap, HandCoins, FileSearch, TrendingUpDown } from '@lucide/svelte/icons';
 	import { goto } from '$app/navigation';
+
+	const { data } = $props<{
+		data: {
+			referrer: string;
+		};
+	}>();
 </script>
 
 <main>
 	<div class="flex flex-col items-center lg:mt-10 lg:space-y-15">
 		<section class="section grid grid-cols-1 items-center gap-5 lg:w-4xl">
 			<div class="col-start-1 flex justify-center lg:row-start-1 lg:justify-start">
-				<img src="Slipper-logo.png" alt="Slipper Logo" class="w-[8rem]" />
+				<img src="/Slipper-logo.png" alt="Slipper Logo" class="w-[8rem]" />
 			</div>
 			<div class="col-start-1 flex flex-col space-y-5 lg:w-lg xl:w-xl">
 				<h1 class="h1 text-left text-3xl">
-					<span class="text-warning-500">Jon</span> har invitert deg til Slipper
+					<span class="text-warning-500">{data.referrer}</span> har invitert deg til Slipper
 				</h1>
 				<p class="text-left text-lg">
 					Slipper er Norges første uavhengige strømbytte-app - laget av forbrukere, for forbrukere.
@@ -19,7 +25,7 @@
 					deg.
 				</p>
 				<button
-					onclick={() => goto('opprett-konto')}
+					onclick={() => goto('/opprett-konto/')}
 					class="bg-secondary-500 hover:bg-secondary-600 lg-14 mt-6 flex cursor-pointer items-center justify-between rounded-full px-5 py-3 text-center lg:w-sm"
 				>
 					<span class="flex-1 text-lg text-black">Kom i gang</span>
@@ -29,7 +35,7 @@
 			<div
 				class="row-span-1 row-start-2 mt-5 flex justify-center lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:mt-0 lg:justify-end"
 			>
-				<img src="iPhone.png" alt="iPhone" class="h-76 w-52" />
+				<img src="/iPhone.png" alt="iPhone" class="h-76 w-52" />
 			</div>
 		</section>
 
@@ -74,7 +80,7 @@
 
 		<section class="section mb-12 grid grid-cols-1 items-center gap-5 lg:w-4xl">
 			<div class="flex justify-center">
-				<img src="Paa-lag.png" alt="Paa Lag" class="max-w-[100px]" />
+				<img src="/Paa-lag.png" alt="Paa Lag" class="max-w-[100px]" />
 			</div>
 			<div class="w-none col-start-1 flex flex-col justify-center lg:max-w-3xl">
 				<h1 class="h1 text-2xl">
@@ -89,7 +95,7 @@
 			</div>
 			<div class=" flex flex-col lg:items-center">
 				<button
-					onclick={() => goto('opprett-konto/')}
+					onclick={() => goto('/opprett-konto/')}
 					class="bg-secondary-500 hover:bg-secondary-600 lg-14 mt-6 flex cursor-pointer items-center justify-between rounded-full px-5 py-3 text-center lg:w-sm"
 				>
 					<span class="flex-1 text-lg text-black">Kom i gang</span>

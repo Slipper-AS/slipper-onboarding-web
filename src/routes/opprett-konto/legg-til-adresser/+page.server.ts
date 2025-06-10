@@ -1,5 +1,5 @@
-import { redirect } from '@sveltejs/kit';
-import type { Actions } from './$types';
+import { redirect, type RequestEvent } from '@sveltejs/kit';
+import type { Actions, PageServerLoad } from './$types';
 const GRAPHQL_ENDPOINT = 'https://api.slipper.no/graphql/';
 
 export const actions: Actions = {
@@ -9,7 +9,7 @@ export const actions: Actions = {
 		const redirectUrl =
 			import.meta.env.MODE === 'development'
 				? 'https://localhost:3000/opprett-konto/adresser'
-				: 'https://slipper.no/opprett-konto/adresser';
+				: 'https://id.slipper.no/opprett-konto/adresser';
 
 		const mutation = `
         mutation {
@@ -40,4 +40,31 @@ export const actions: Actions = {
 
 		throw redirect(302, requestUrl);
 	},
+};
+
+export const load: PageServerLoad = async ({ cookies }: RequestEvent) => {
+	const referralCode = cookies.get('referredByCookie');
+	const bearerToken = cookies.get('bearer_token');
+
+	const referralCodeUpdateMutation = `
+		mutation myMutation($referredByCode: String!) {
+			referralCodeUpdate(referredByCode: $referredByCode) {
+			success
+		}
+}
+	`;
+
+	await fetch(GRAPHQL_ENDPOINT, {
+		method: 'POST',
+		headers: {
+			'Content-Type': 'application/json',
+			Authorization: `Bearer ${bearerToken}`,
+		},
+		body: JSON.stringify({
+			query: referralCodeUpdateMutation,
+			variables: {
+				referredByCode: referralCode,
+			},
+		}),
+	});
 };
