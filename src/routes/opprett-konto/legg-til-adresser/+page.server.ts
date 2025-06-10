@@ -9,7 +9,7 @@ export const actions: Actions = {
 		const redirectUrl =
 			import.meta.env.MODE === 'development'
 				? 'https://localhost:3000/opprett-konto/adresser'
-				: 'https://slipper.no/opprett-konto/adresser';
+				: 'https://id.slipper.no/opprett-konto/adresser';
 
 		const mutation = `
         mutation {
