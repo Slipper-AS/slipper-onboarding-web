@@ -21,13 +21,15 @@ export const actions: Actions = {
 		const formData = await request.formData();
 		const code = formData.getAll('otp[]').join('');
 
-		const loginMutation = `mutation mymutatation($number: String!, $code:Int!) {
-        smsLogin(number: $number, code: $code, lang: "no") {
-        found
-        token
-        hasUser
-    }
-}`;
+		const loginMutation = ` 
+			mutation mymutatation($number: String!, $code:Int!) {
+        		smsLogin(number: $number, code: $code, lang: "no") {
+					found
+					token
+					hasUser
+    			}
+			}`;
+
 		const response = await fetch(GRAPHQL_ENDPOINT, {
 			method: 'POST',
 			headers: {

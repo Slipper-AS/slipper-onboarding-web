@@ -43,6 +43,14 @@ export const load: PageServerLoad = async ({ params, cookies }: RequestEvent) =>
 		maxAge: 60 * 60 * 24 * 30,
 	});
 
+	cookies.set('referredByCookie', referralCode, {
+		path: '/',
+		httpOnly: true,
+		sameSite: 'lax',
+		secure: true,
+		maxAge: 60 * 60 * 24 * 30,
+	});
+
 	const referrer = cookies.get('shortName');
 
 	return {
