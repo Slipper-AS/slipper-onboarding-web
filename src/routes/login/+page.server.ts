@@ -15,8 +15,8 @@ export const load: PageServerLoad = async ({ url, cookies }: RequestEvent) => {
 			maxAge: 60 * 60,
 		});
 
-		throw redirect(302, '/opprett-konto/legg-til-adresser');
+		redirect(302, '/opprett-konto/legg-til-adresser');
 	} else {
-		throw redirect(302, '/error');
+		redirect(302, '/error');
 	}
 };

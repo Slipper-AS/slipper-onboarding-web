@@ -4,7 +4,7 @@ import type { PageServerLoad, RequestEvent } from './$types.js';
 const GRAPHQL_ENDPOINT = 'https://api.slipper.no/graphql/';
 
 export const load: PageServerLoad = async ({ params, cookies }: RequestEvent) => {
-	const referralCode = params.referralCode;
+	const referralCode = params.code;
 
 	const query = `
 		query q($code: String!) {
@@ -32,6 +32,8 @@ export const load: PageServerLoad = async ({ params, cookies }: RequestEvent) =>
 	}
 
 	const referrerShortName = result.data.shortNameFromReferralCode;
+
+	cookies.delete('shortName', { path: '/' });
 
 	cookies.set('shortName', referrerShortName, {
 		path: '/',
