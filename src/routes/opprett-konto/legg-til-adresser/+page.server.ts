@@ -1,25 +1,20 @@
 import { redirect, type RequestEvent } from '@sveltejs/kit';
 import type { Actions, PageServerLoad } from './$types';
-const GRAPHQL_ENDPOINT = 'https://api.slipper.no/graphql/';
+import { PUBLIC_API_BASE_URL, PUBLIC_REDIRECT_ELHUB_URL } from '$env/static/public';
 
 export const actions: Actions = {
 	default: async ({ cookies }: import('@sveltejs/kit').RequestEvent) => {
 		const bearerToken = cookies.get('bearer_token');
 
-		const redirectUrl =
-			import.meta.env.MODE === 'development'
-				? 'https://localhost:3000/opprett-konto/adresser'
-				: 'https://id.slipper.no/opprett-konto/adresser';
-
 		const mutation = `
         mutation {
-            elhub(redirect: "${redirectUrl}") {
+            elhub(redirect: "${PUBLIC_REDIRECT_ELHUB_URL}") {
                 requestUrl
             }
         }
         `;
 
-		const response = await fetch(GRAPHQL_ENDPOINT, {
+		const response = await fetch(PUBLIC_API_BASE_URL, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
@@ -54,7 +49,7 @@ export const load: PageServerLoad = async ({ cookies }: RequestEvent) => {
 }
 	`;
 
-	await fetch(GRAPHQL_ENDPOINT, {
+	await fetch(PUBLIC_API_BASE_URL, {
 		method: 'POST',
 		headers: {
 			'Content-Type': 'application/json',

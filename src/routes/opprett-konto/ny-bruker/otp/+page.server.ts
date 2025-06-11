@@ -1,7 +1,6 @@
+import { PUBLIC_API_BASE_URL } from '$env/static/public';
 import type { PageServerLoad, Actions } from './$types';
-import { redirect, fail } from '@sveltejs/kit';
-
-const GRAPHQL_ENDPOINT = 'https://api.slipper.no/graphql/';
+import { redirect } from '@sveltejs/kit';
 
 export const load: PageServerLoad = ({ cookies }: import('@sveltejs/kit').RequestEvent) => {
 	const phone = cookies.get('otp_phone');
@@ -30,7 +29,7 @@ export const actions: Actions = {
     			}
 			}`;
 
-		const response = await fetch(GRAPHQL_ENDPOINT, {
+		const response = await fetch(PUBLIC_API_BASE_URL, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
