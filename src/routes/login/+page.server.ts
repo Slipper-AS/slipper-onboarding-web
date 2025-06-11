@@ -1,13 +1,12 @@
 import { redirect } from '@sveltejs/kit';
 import type { PageServerLoad } from './$types';
+import { COOKIE_KEYS } from '$lib/cookies';
 
-import type { RequestEvent } from '@sveltejs/kit';
-
-export const load: PageServerLoad = async ({ url, cookies }: RequestEvent) => {
+export const load: PageServerLoad = async ({ url, cookies }) => {
 	const token = url.searchParams.get('token');
 
 	if (token) {
-		cookies.set('bearer_token', token, {
+		cookies.set(COOKIE_KEYS.bearerToken, token, {
 			path: '/',
 			httpOnly: true,
 			sameSite: 'lax',
