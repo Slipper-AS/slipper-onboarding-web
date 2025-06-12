@@ -3,6 +3,7 @@
 
 	import { afterNavigate } from '$app/navigation';
 	import { onMount } from 'svelte';
+	import CookieBanner from '$lib/components/CookieBanner.svelte';
 
 	let { children } = $props();
 	onMount(() => {
@@ -15,4 +16,5 @@
 	});
 </script>
 
+<CookieBanner />
 {@render children()}
