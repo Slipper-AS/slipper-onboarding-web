@@ -1,4 +1,8 @@
 <script lang="ts">
+	import {
+		PUBLIC_REDIRECT_SLIPPER_APPSTORE_URL,
+		PUBLIC_REDIRECT_SLIPPER_PLAYSTORE_URL,
+	} from '$env/static/public';
 	import { ArrowRight, Zap, HandCoins, TrendingUpDown, Users } from '@lucide/svelte/icons';
 
 	const slipperInfo = [
@@ -33,12 +37,9 @@
 
 	function handleDownload() {
 		if (isAndroid) {
-			window.location.href = 'https://play.google.com/store/apps/details?id=no.slipper.app&hl=no';
+			window.location.href = PUBLIC_REDIRECT_SLIPPER_PLAYSTORE_URL;
 		} else if (isIOS) {
-			window.location.href =
-				'https://apps.apple.com/no/app/slipper-power-to-the-people/id6471837168?l=nb';
-		} else {
-			window.location.href = 'https://qr.slipper.no/r/Lastned';
+			window.location.href = PUBLIC_REDIRECT_SLIPPER_APPSTORE_URL;
 		}
 	}
 </script>
