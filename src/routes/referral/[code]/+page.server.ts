@@ -1,7 +1,6 @@
 import { error } from '@sveltejs/kit';
 import type { PageServerLoad, RequestEvent } from './$types.js';
-
-const GRAPHQL_ENDPOINT = 'https://api.slipper.no/graphql/';
+import { PUBLIC_API_BASE_URL } from '$env/static/public';
 
 export const load: PageServerLoad = async ({ params, cookies }: RequestEvent) => {
 	const referralCode = params.code;
@@ -12,7 +11,7 @@ export const load: PageServerLoad = async ({ params, cookies }: RequestEvent) =>
 		}
 	`;
 
-	const response = await fetch(GRAPHQL_ENDPOINT, {
+	const response = await fetch(PUBLIC_API_BASE_URL, {
 		method: 'POST',
 		headers: {
 			'Content-Type': 'application/json',

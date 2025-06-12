@@ -1,6 +1,5 @@
 import { json } from '@sveltejs/kit';
-
-const GRAPHQL_ENDPOINT = 'https://api.slipper.no/graphql/';
+import { PUBLIC_API_BASE_URL } from '$env/static/public';
 
 async function fetchAdresses(cookies: import('@sveltejs/kit').Cookies): Promise<any | null> {
 	const bearerToken = cookies.get('bearer_token');
@@ -20,7 +19,7 @@ async function fetchAdresses(cookies: import('@sveltejs/kit').Cookies): Promise<
 		}
 	`;
 
-	const res = await fetch(GRAPHQL_ENDPOINT, {
+	const res = await fetch(PUBLIC_API_BASE_URL, {
 		method: 'POST',
 		headers: {
 			'Content-Type': 'application/json',

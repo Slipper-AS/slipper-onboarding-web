@@ -1,7 +1,6 @@
+import { PUBLIC_API_BASE_URL } from '$env/static/public';
 import type { Actions } from './$types';
 import { redirect } from '@sveltejs/kit';
-
-const GRAPHQL_ENDPOINT = 'https://api.slipper.no/graphql/';
 
 export const actions: Actions = {
 	default: async ({ request, cookies }: import('@sveltejs/kit').RequestEvent) => {
@@ -14,7 +13,7 @@ export const actions: Actions = {
 
 		const loginMutation = `mutation mymutatation ($number: String = "${phone}"){smsLogin(number: $number, lang: "no") {found,token,hasUser}}`;
 
-		const response = await fetch(GRAPHQL_ENDPOINT, {
+		await fetch(PUBLIC_API_BASE_URL, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
