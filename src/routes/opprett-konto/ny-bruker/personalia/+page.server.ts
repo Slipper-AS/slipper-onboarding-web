@@ -1,10 +1,10 @@
+import { PUBLIC_API_BASE_URL } from '$env/static/public';
+import { COOKIE_KEYS } from '$lib/cookies.js';
 import type { Actions } from './$types.js';
 import { fail } from '@sveltejs/kit';
 
-const GRAPHQL_ENDPOINT = 'https://api.slipper.no/graphql/';
-
 export const actions: Actions = {
-	default: async ({ request, cookies }: import('@sveltejs/kit').RequestEvent) => {
+	default: async ({ request, cookies }) => {
 		const formData = await request.formData();
 		const firstName = formData.get('firstname')?.toString();
 		const lastName = formData.get('lastname')?.toString();
@@ -28,7 +28,6 @@ export const actions: Actions = {
 			return fail(400, { errors });
 		}
 
-		// Parse dd/mm/yyyy
 		const [day, month, year] = birthDate.split('.');
 
 		if (!day || !month || !year) {
@@ -59,12 +58,18 @@ export const actions: Actions = {
 			}
 		`;
 
+		const bearerToken = cookies.get(COOKIE_KEYS.bearerToken);
+		if (!bearerToken) {
+			errors.result = 'Mangler autentisering.';
+			return fail(401, { errors });
+		}
+
 		try {
-			const response = await fetch(GRAPHQL_ENDPOINT, {
+			const response = await fetch(PUBLIC_API_BASE_URL, {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json',
-					Authorization: `Bearer ${cookies.get('bearer_token')}`,
+					Authorization: `Bearer ${bearerToken}`,
 				},
 				body: JSON.stringify({
 					query: mutation,
@@ -79,10 +84,10 @@ export const actions: Actions = {
 			const result = await response.json();
 
 			if (result.errors) {
-				console.error('GraphQL errors:', result.errors);
 				errors.result = 'Kunne ikke oppdatere bruker.';
 				return fail(500, { errors });
 			}
+			return { success: true };
 		} catch (err) {
 			errors.result = 'Noe gikk galt';
 			return fail(500, { errors });
