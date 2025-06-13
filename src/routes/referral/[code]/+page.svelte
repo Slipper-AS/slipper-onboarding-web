@@ -4,7 +4,7 @@
 
 	const { data } = $props<{
 		data: {
-			referrer: string;
+			referrerShortName: string;
 		};
 	}>();
 </script>
@@ -17,7 +17,7 @@
 			</div>
 			<div class="col-start-1 flex flex-col space-y-5 lg:w-lg xl:w-xl">
 				<h1 class="h1 text-left text-3xl">
-					<span class="text-warning-500">{data.referrer}</span> har invitert deg til Slipper
+					<span class="text-warning-500">{data.referrerShortName}</span> har invitert deg til Slipper
 				</h1>
 				<p class="text-left text-lg">
 					Slipper er Norges første uavhengige strømbytte-app - laget av forbrukere, for forbrukere.
