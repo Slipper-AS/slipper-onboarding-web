@@ -19,6 +19,8 @@ export const actions: Actions = {
         }
         `;
 
+		let requestUrl: string | undefined;
+
 		try {
 			const response = await fetch(PUBLIC_API_BASE_URL, {
 				method: 'POST',
@@ -32,16 +34,16 @@ export const actions: Actions = {
 			});
 
 			const result = await response.json();
-			const requestUrl = result?.data?.elhub?.requestUrl;
+			requestUrl = result?.data?.elhub?.requestUrl;
 
 			if (!requestUrl) {
 				return { error: 'Failed to get requestUrl' };
 			}
-
-			redirect(302, requestUrl);
 		} catch (error) {
 			return { error: 'Failed to initiate Elhub request' };
 		}
+
+		redirect(302, requestUrl);
 	},
 };
 

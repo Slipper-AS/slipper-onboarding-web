@@ -23,7 +23,9 @@
 	});
 </script>
 
-<div class="row-start-2 mx-10 flex flex-col space-y-6 text-left sm:row-start-2 md:mx-0">
+<div
+	class="row-span-full row-start-2 mx-10 -mt-50 flex flex-col justify-center space-y-6 text-left sm:row-start-2 sm:mt-0 sm:justify-normal md:mx-0"
+>
 	{#if status === 'fetching'}
 		<AdresserVenter />
 	{:else if status === 'timeout'}

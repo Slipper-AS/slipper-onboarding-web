@@ -19,7 +19,9 @@
 	let error = $state(false);
 </script>
 
-<div class="row-start-3 m-12 flex w-min flex-col space-y-6 text-left sm:row-start-2 md:mx-0">
+<div
+	class="row-span-full row-start-2 mx-8 -mt-30 flex flex-col items-center justify-center space-y-6 text-left sm:mt-0 sm:justify-normal md:mx-0"
+>
 	<h1 class="text-3xl">Tast inn koden sendt til <br />+47 {data.phone}</h1>
 
 	<form
@@ -40,7 +42,7 @@
 			{#each pinInput.inputs as input}
 				<input
 					name="otp[]"
-					class="focus:border-accent-500 h-20 w-14 rounded-xl border-2 bg-white text-center
+					class="focus:border-accent-500 pin-input-width h-20 w-14 rounded-xl border-2 bg-white px-0! text-center
 				transition outline-none hover:border-gray-400 disabled:cursor-not-allowed
 				 dark:hover:border-gray-400 dark:focus:border-gray-300"
 					class:border-error-500={error}
@@ -68,3 +70,11 @@
 		</button>
 	</form>
 </div>
+
+<style>
+	@media (max-width: 410px) {
+		.pin-input-width {
+			width: 2.8rem;
+		}
+	}
+</style>
