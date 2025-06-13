@@ -74,7 +74,9 @@
 	}
 </script>
 
-<div class="row-start-3 flex flex-col space-y-6 text-left sm:row-start-2 md:mx-0">
+<div
+	class="row-span-full row-start-2 -mt-30 flex flex-col justify-center space-y-6 text-left sm:mt-0 sm:justify-normal md:mx-0"
+>
 	<div class="flex items-center space-x-2">
 		<User class="text-secondary-500" />
 		<h1 class="text-3xl">Litt kort om deg</h1>
@@ -95,7 +97,7 @@
 				}
 			};
 		}}
-		class="w-max-lg flex flex-col"
+		class="flex w-sm max-w-lg flex-col sm:w-lg"
 	>
 		<div class="mb-10 space-y-4">
 			<label class="label">
@@ -108,10 +110,10 @@
 						class="input"
 						bind:value={firstname}
 						oninput={() => (attemptedSubmit = false)}
-						class:border-red-500!={(attemptedSubmit && !firstnameValid) || form?.errors.firstname}
-						class:border-2!={(attemptedSubmit && !firstnameValid) || form?.errors.firstname}
+						class:border-red-500!={(attemptedSubmit && !firstnameValid) || form?.errors?.firstname}
+						class:border-2!={(attemptedSubmit && !firstnameValid) || form?.errors?.firstname}
 					/>
-					{#if (attemptedSubmit && !firstnameValid) || form?.errors.firstname}
+					{#if (attemptedSubmit && !firstnameValid) || form?.errors?.firstname}
 						<AlertCircle
 							class="pointer-events-none absolute top-1/2 right-5 size-6 -translate-y-1/2 text-red-500"
 						/>
@@ -132,10 +134,10 @@
 						class="input"
 						bind:value={lastname}
 						oninput={() => (attemptedSubmit = false)}
-						class:border-red-500!={(attemptedSubmit && !lastnameValid) || form?.errors.lastname}
-						class:border-2!={(attemptedSubmit && !lastnameValid) || form?.errors.lastname}
+						class:border-red-500!={(attemptedSubmit && !lastnameValid) || form?.errors?.lastname}
+						class:border-2!={(attemptedSubmit && !lastnameValid) || form?.errors?.lastname}
 					/>
-					{#if (attemptedSubmit && !lastnameValid) || form?.errors.lastname}
+					{#if (attemptedSubmit && !lastnameValid) || form?.errors?.lastname}
 						<AlertCircle
 							class="pointer-events-none absolute top-1/2 right-5 size-6 -translate-y-1/2 text-red-500"
 						/>
@@ -151,8 +153,8 @@
 				<div class="relative">
 					<input
 						class="input"
-						class:border-red-500!={(attemptedSubmit && !dobValid) || form?.errors.dob}
-						class:border-2!={(attemptedSubmit && !dobValid) || form?.errors.dob}
+						class:border-red-500!={(attemptedSubmit && !dobValid) || form?.errors?.dob}
+						class:border-2!={(attemptedSubmit && !dobValid) || form?.errors?.dob}
 						type="text"
 						id="dob"
 						name="dob"
@@ -167,7 +169,7 @@
 					<div class="placeholder-overlay">
 						<span class="filled-mask">{dob}</span>{remainingPlaceholder}
 					</div>
-					{#if (attemptedSubmit && !dobValid) || form?.errors.dob}
+					{#if (attemptedSubmit && !dobValid) || form?.errors?.dob}
 						<AlertCircle
 							class="pointer-events-none absolute top-1/2 right-5 size-6 -translate-y-1/2 text-red-500"
 						/>

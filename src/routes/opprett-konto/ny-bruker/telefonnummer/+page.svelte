@@ -5,7 +5,9 @@
 	$: phoneIsValid = /^\d{8}$/.test(phone);
 </script>
 
-<div class="row-start-3 m-10 flex flex-col space-y-6 pb-20 text-left sm:row-start-2 md:mx-0">
+<div
+	class="row-span-full row-start-2 m-10 flex flex-col justify-center space-y-6 pb-20 text-left sm:justify-normal md:mx-0"
+>
 	<h1 class="text-3xl">Logg inn med ditt telefonnummer</h1>
 	<p>Vi sender deg en kode på SMS</p>
 	<form method="POST" class="flex flex-col space-y-4">

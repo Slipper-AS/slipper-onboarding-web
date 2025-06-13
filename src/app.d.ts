@@ -8,6 +8,11 @@ declare global {
 		// interface PageState {}
 		// interface Platform {}
 	}
+	function gtag(
+		command: 'js' | 'config' | 'event',
+		targetIdOrEventName: string,
+		params?: Record<string, any>
+	): void;
 }
 
 export {};

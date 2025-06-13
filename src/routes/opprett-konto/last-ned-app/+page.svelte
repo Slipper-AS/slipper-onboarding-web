@@ -1,4 +1,8 @@
 <script lang="ts">
+	import {
+		PUBLIC_REDIRECT_SLIPPER_APPSTORE_URL,
+		PUBLIC_REDIRECT_SLIPPER_PLAYSTORE_URL,
+	} from '$env/static/public';
 	import { ArrowRight, Zap, HandCoins, TrendingUpDown, Users } from '@lucide/svelte/icons';
 
 	const slipperInfo = [
@@ -33,19 +37,18 @@
 
 	function handleDownload() {
 		if (isAndroid) {
-			window.location.href = 'https://play.google.com/store/apps/details?id=no.slipper.app&hl=no';
+			window.location.href = PUBLIC_REDIRECT_SLIPPER_PLAYSTORE_URL;
 		} else if (isIOS) {
-			window.location.href =
-				'https://apps.apple.com/no/app/slipper-power-to-the-people/id6471837168?l=nb';
-		} else {
-			window.location.href = 'https://qr.slipper.no/r/Lastned';
+			window.location.href = PUBLIC_REDIRECT_SLIPPER_APPSTORE_URL;
 		}
 	}
 </script>
 
-<div class="row-start-3 mx-10 -mt-25 flex flex-col space-y-6 text-left sm:row-start-2 md:mx-0">
+<div
+	class="screen-padding row-span-full row-start-2 mx-10 flex flex-col space-y-6 text-left sm:row-start-2 md:mx-0"
+>
 	{#if isAndroid || isIOS}
-		<img src="/Last-ned-app.png" alt="iPhones" class="size-60 self-center" />
+		<img src="/Last-ned-app.png" alt="iPhones" class="responsive-img size-60 self-center" />
 	{:else}
 		<div class="flex flex-col items-center space-y-0">
 			<img src="/Slipper-app-qr-code.png" alt="QR Code" class="size-60 self-center" />
@@ -74,3 +77,16 @@
 		</button>
 	{/if}
 </div>
+
+<style>
+	@media (max-width: 380px) {
+		.responsive-img {
+			width: 10rem;
+			height: 10rem;
+		}
+
+		.screen-padding {
+			height: 101vh;
+		}
+	}
+</style>

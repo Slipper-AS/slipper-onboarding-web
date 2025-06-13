@@ -1,11 +1,19 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
 	import { ArrowRight, Home } from '@lucide/svelte/icons';
+	import Lottie from '../Lottie.svelte';
+
+	import bingoFoundAddresses from '$lib/animations/bingoFoundAddresses.json';
 
 	let props = $props();
 </script>
 
-<img src="/Happy-dancing-man.png" alt="Happy Dancing Man" class="size-60 self-center" />
+<Lottie
+	animationData={bingoFoundAddresses}
+	classname="size-60 self-center"
+	loop={true}
+	autoplay={true}
+/>
 <h1 class="text-3xl">Bingo! Vi fant følgende adresser:</h1>
 <ul>
 	{#each props.data as address}
