@@ -7,7 +7,7 @@ export const load: PageServerLoad = ({ cookies }) => {
 	const phone = cookies.get(COOKIE_KEYS.otpPhone);
 
 	if (!phone) {
-		redirect(303, 'opprett-konto/ny-bruker/telefonnummer');
+		redirect(303, '/opprett-konto/ny-bruker/telefonnummer');
 	}
 
 	return { phone };
