@@ -1,10 +1,14 @@
 import { error } from '@sveltejs/kit';
-import type { PageServerLoad, RequestEvent } from './$types.js';
+import type { PageServerLoad } from './$types.js';
+import { PUBLIC_API_BASE_URL } from '$env/static/public';
+import { COOKIE_KEYS } from '$lib/cookies.js';
 
-const GRAPHQL_ENDPOINT = 'https://api.slipper.no/graphql/';
-
-export const load: PageServerLoad = async ({ params, cookies }: RequestEvent) => {
+export const load: PageServerLoad = async ({ params, cookies }) => {
 	const referralCode = params.code;
+
+	if (!referralCode || referralCode.length < 3) {
+		throw error(400, 'Ugyldig invitasjonskode');
+	}
 
 	const query = `
 		query q($code: String!) {
@@ -12,49 +16,46 @@ export const load: PageServerLoad = async ({ params, cookies }: RequestEvent) =>
 		}
 	`;
 
-	const response = await fetch(GRAPHQL_ENDPOINT, {
-		method: 'POST',
-		headers: {
-			'Content-Type': 'application/json',
-		},
-		body: JSON.stringify({
-			query,
-			variables: {
-				code: referralCode,
+	try {
+		const response = await fetch(PUBLIC_API_BASE_URL, {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
 			},
-		}),
-	});
+			body: JSON.stringify({
+				query,
+				variables: {
+					code: referralCode,
+				},
+			}),
+		});
 
-	const result = await response.json();
+		const result = await response.json();
 
-	if (!response.ok || result.errors || !result.data?.shortNameFromReferralCode) {
-		throw error(404, 'Ugyldig eller utløpt invitasjon');
+		if (!response.ok || result.errors || !result.data?.shortNameFromReferralCode) {
+			throw error(404, 'Ugyldig eller utløpt invitasjon');
+		}
+
+		const referrerShortName = result.data.shortNameFromReferralCode;
+
+		cookies.delete(COOKIE_KEYS.shortName, { path: '/' });
+
+		const cookieOptions = {
+			path: '/',
+			httpOnly: true,
+			sameSite: 'lax' as const,
+			secure: true,
+			maxAge: 60 * 60 * 24 * 30, // 30 days
+		};
+
+		cookies.set(COOKIE_KEYS.shortName, referrerShortName, cookieOptions);
+		cookies.set(COOKIE_KEYS.referredByCookie, referralCode, cookieOptions);
+
+		return {
+			referrerShortName,
+		};
+	} catch (err) {
+		console.error('Error fetching referral code:', err);
+		throw error(500, 'Kunne ikke hente invitasjonskode');
 	}
-
-	const referrerShortName = result.data.shortNameFromReferralCode;
-
-	cookies.delete('shortName', { path: '/' });
-
-	cookies.set('shortName', referrerShortName, {
-		path: '/',
-		httpOnly: true,
-		sameSite: 'lax',
-		secure: true,
-		maxAge: 60 * 60 * 24 * 30,
-	});
-
-	cookies.set('referredByCookie', referralCode, {
-		path: '/',
-		httpOnly: true,
-		sameSite: 'lax',
-		secure: true,
-		maxAge: 60 * 60 * 24 * 30,
-	});
-
-	const referrer = cookies.get('shortName');
-
-	return {
-		referrerShortName,
-		referrer,
-	};
 };
