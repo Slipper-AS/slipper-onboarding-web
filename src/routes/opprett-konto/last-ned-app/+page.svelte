@@ -44,9 +44,11 @@
 	}
 </script>
 
-<div class="row-start-3 mx-10 -mt-25 flex flex-col space-y-6 text-left sm:row-start-2 md:mx-0">
+<div
+	class="screen-padding row-span-full row-start-2 mx-10 flex flex-col space-y-6 text-left sm:row-start-2 md:mx-0"
+>
 	{#if isAndroid || isIOS}
-		<img src="/Last-ned-app.png" alt="iPhones" class="size-60 self-center" />
+		<img src="/Last-ned-app.png" alt="iPhones" class="responsive-img size-60 self-center" />
 	{:else}
 		<div class="flex flex-col items-center space-y-0">
 			<img src="/Slipper-app-qr-code.png" alt="QR Code" class="size-60 self-center" />
@@ -75,3 +77,16 @@
 		</button>
 	{/if}
 </div>
+
+<style>
+	@media (max-width: 380px) {
+		.responsive-img {
+			width: 10rem;
+			height: 10rem;
+		}
+
+		.screen-padding {
+			height: 101vh;
+		}
+	}
+</style>

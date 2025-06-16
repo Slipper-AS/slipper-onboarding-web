@@ -53,7 +53,6 @@ export const load: PageServerLoad = async ({ params, cookies }) => {
 
 		return {
 			referrerShortName,
-			referrer: referralCode,
 		};
 	} catch (err) {
 		console.error('Error fetching referral code:', err);

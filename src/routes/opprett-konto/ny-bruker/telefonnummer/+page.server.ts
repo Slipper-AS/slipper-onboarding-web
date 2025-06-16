@@ -45,11 +45,10 @@ export const actions: Actions = {
 				httpOnly: true,
 				maxAge: 60 * 60,
 			});
-
-			redirect(303, '/opprett-konto/ny-bruker/otp');
 		} catch (error) {
 			console.error('Error during phone login:', error);
 			return { error: 'Noe gikk galt under innlogging med telefonnummer.' };
 		}
+		redirect(303, '/opprett-konto/ny-bruker/otp');
 	},
 };
