@@ -3,6 +3,7 @@
 	import { PinInput } from 'melt/builders';
 	import { enhance } from '$app/forms';
 	import { goto } from '$app/navigation';
+	import BackButton from '$lib/components/BackButton.svelte';
 
 	const pinInput = new PinInput({
 		maxLength: 6,
@@ -19,6 +20,7 @@
 	let error = $state(false);
 </script>
 
+<BackButton />
 <div
 	class="row-span-full row-start-2 mx-8 -mt-30 flex flex-col items-center justify-center space-y-6 text-left sm:mt-0 sm:justify-normal md:mx-0"
 >

@@ -1,7 +1,9 @@
 <script>
+	import BackButton from '$lib/components/BackButton.svelte';
 	import { ArrowRight, Info } from '@lucide/svelte/icons';
 </script>
 
+<BackButton />
 <div
 	class="row-start-2 mx-10 flex flex-col space-y-6 pb-20 text-left sm:row-start-2 sm:-mt-10 md:mx-0"
 >
