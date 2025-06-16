@@ -1,7 +1,6 @@
+import { PUBLIC_API_BASE_URL } from '$env/static/public';
 import type { Actions } from './$types.js';
 import { fail } from '@sveltejs/kit';
-
-const GRAPHQL_ENDPOINT = 'https://api.slipper.no/graphql/';
 
 export const actions: Actions = {
 	default: async ({ request, cookies }: import('@sveltejs/kit').RequestEvent) => {
@@ -60,7 +59,7 @@ export const actions: Actions = {
 		`;
 
 		try {
-			const response = await fetch(GRAPHQL_ENDPOINT, {
+			const response = await fetch(PUBLIC_API_BASE_URL, {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json',
@@ -79,7 +78,6 @@ export const actions: Actions = {
 			const result = await response.json();
 
 			if (result.errors) {
-				console.error('GraphQL errors:', result.errors);
 				errors.result = 'Kunne ikke oppdatere bruker.';
 				return fail(500, { errors });
 			}
