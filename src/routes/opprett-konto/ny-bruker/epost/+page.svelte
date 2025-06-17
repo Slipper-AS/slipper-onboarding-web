@@ -34,7 +34,7 @@
 			};
 		}}
 		method="POST"
-		class="flex w-sm max-w-lg flex-col space-y-6 sm:w-lg"
+		class="xs-width flex w-sm max-w-lg flex-col space-y-6 sm:w-lg"
 	>
 		<label class="label">
 			<span class="label-text"> E-post </span>
@@ -72,3 +72,11 @@
 		</button>
 	</form>
 </div>
+
+<style>
+	@media (max-width: 425px) {
+		.xs-width {
+			width: 20rem;
+		}
+	}
+</style>
