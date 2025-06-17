@@ -10,17 +10,19 @@
 
 <Lottie
 	animationData={bingoFoundAddresses}
-	classname="size-60 self-center"
+	classname="size-40 sm:size-60 self-center"
 	loop={true}
 	autoplay={true}
 />
-<h1 class="text-3xl">Bingo! Vi fant følgende adresser:</h1>
+<h1 class:text-xl={props.smallText} class:text-3xl={!props.smallText}>
+	Bingo! Vi fant følgende adresser:
+</h1>
 <ul>
 	{#each props.data as address}
 		<li class="mb-4">
 			<div class="flex items-center space-x-4">
 				<Home class="text-secondary-500" />
-				<p class="text-lg">
+				<p class:text-lg={!props.smallText} class:text-md={props.smallText}>
 					{address.street}
 					{address.streetNumber}, {address.postalCode}
 					{address.city}

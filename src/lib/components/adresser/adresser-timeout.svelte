@@ -3,7 +3,7 @@
 	import { ArrowRight } from '@lucide/svelte/icons';
 </script>
 
-<img src="/Vi-forhandler.png" alt="Vi Forhandler" class="size-60 self-center" />
+<img src="/Vi-forhandler.png" alt="Vi Forhandler" class="size-45 self-center sm:size-60" />
 <h1 class="text-3xl">Elhub bruker lang tid</h1>
 <p>
 	Elhub bruker litt lengre tid enn normalt å sende oss adressene dine, men du kan begynne å bruke
