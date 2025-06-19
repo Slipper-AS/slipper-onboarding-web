@@ -15,6 +15,7 @@
 		onclick={() => {
 			window.location.href = PUBLIC_REDIRECT_VIPPS_URL;
 		}}
+		name="vipps-login-button"
 		class="bg-warning-500 hover:bg-warning-600 flex w-full items-center justify-between rounded-full px-4 py-3 text-white transition duration-200"
 	>
 		<span class="flex-1 text-lg"> Logg inn med Vipps</span>

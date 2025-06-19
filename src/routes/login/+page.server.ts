@@ -11,7 +11,7 @@ export const load: PageServerLoad = async ({ url, cookies }) => {
 			httpOnly: true,
 			sameSite: 'lax',
 			secure: true,
-			maxAge: 60 * 60,
+			maxAge: 60 * 60 * 24,
 		});
 
 		redirect(302, '/opprett-konto/legg-til-adresser');
