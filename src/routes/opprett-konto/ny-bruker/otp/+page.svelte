@@ -3,6 +3,8 @@
 	import { PinInput } from 'melt/builders';
 	import { enhance } from '$app/forms';
 	import { goto } from '$app/navigation';
+	import { invalidate } from '$app/navigation';
+	import { page } from '$app/stores';
 
 	const pinInput = new PinInput({
 		maxLength: 6,
@@ -17,6 +19,18 @@
 	}>();
 
 	let error = $state(false);
+
+	async function resendCode() {
+		const formData = new FormData();
+		formData.append('phone', data.phone);
+
+		const response = await fetch('/opprett-konto/ny-bruker/telefonnummer', {
+			method: 'POST',
+			body: formData,
+		});
+
+		await response.json();
+	}
 </script>
 
 <div
@@ -53,6 +67,16 @@
 				/>
 			{/each}
 		</div>
+		<p class="text-center text-sm text-[#BABABA] dark:text-gray-300">
+			Har du ikke mottatt koden?
+			<button
+				type="button"
+				onclick={resendCode}
+				class="text-[#BABABA]} ml-1 font-medium underline transition-opacity hover:opacity-80"
+			>
+				Få ny kode
+			</button>
+		</p>
 
 		{#if error}
 			<p class="text-error-500 -mt-1 mb-4 text-base">
