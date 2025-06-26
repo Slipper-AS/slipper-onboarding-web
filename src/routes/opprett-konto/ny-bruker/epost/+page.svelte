@@ -3,6 +3,7 @@
 	import { goto } from '$app/navigation';
 	import { ArrowRight, AtSign, AlertCircle } from '@lucide/svelte/icons';
 	import type { PageProps } from './$types.js';
+	import BackButton from '$lib/components/BackButton.svelte';
 
 	let email = $state('');
 	let emailValid = $derived(email.trim().length > 0 && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email));
@@ -12,6 +13,7 @@
 	let { form }: PageProps = $props();
 </script>
 
+<BackButton />
 <div
 	class="row-span-full row-start-2 -mt-40 flex flex-col justify-center space-y-6 text-left sm:row-start-2 sm:mt-0 sm:justify-normal md:mx-0"
 >
