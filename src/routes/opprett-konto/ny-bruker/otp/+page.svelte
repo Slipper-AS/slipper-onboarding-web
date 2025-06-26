@@ -24,16 +24,17 @@
 <div
 	class="row-span-full row-start-2 mx-8 -mt-30 flex flex-col items-center justify-center space-y-6 text-left sm:mt-0 sm:justify-normal md:mx-0"
 >
-	<h1 class="text-3xl">Tast inn koden sendt til <br />+47 {data.phone}</h1>
+	<h1 class="self-start text-3xl">Tast inn koden sendt til <br />+47 {data.phone}</h1>
 
 	<form
 		method="POST"
 		use:enhance={() => {
 			return async ({ result }) => {
+				console.log('OTP result', result);
 				if (result.type === 'success') {
 					error = false;
 					goto('/opprett-konto/ny-bruker/personalia');
-				} else if (result.type === 'error') {
+				} else if (result.type === 'failure') {
 					error = true;
 				}
 			};

@@ -42,12 +42,14 @@
 			<span class="label-text"> E-post </span>
 			<div class="relative">
 				<input
-					type="email"
+					type="text"
 					id="email"
 					name="email"
 					class="input"
 					bind:value={email}
 					oninput={() => (attemptedSubmit = false)}
+					class:border-red-500!={(attemptedSubmit && !emailValid) || form?.errors?.email}
+					class:border-2!={(attemptedSubmit && !emailValid) || form?.errors?.email}
 				/>
 				{#if (attemptedSubmit && !emailValid) || form?.errors.email}
 					<AlertCircle

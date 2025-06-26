@@ -6,7 +6,7 @@
 
 	let { form }: PageProps = $props();
 
-	const placeholder = 'dd.mm.yyyy';
+	const placeholder = 'dd.mm.åååå';
 	let attemptedSubmit = $state(false);
 
 	let firstname = $state('');
