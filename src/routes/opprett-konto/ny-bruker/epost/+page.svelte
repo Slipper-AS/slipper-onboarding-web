@@ -3,6 +3,7 @@
 	import { goto } from '$app/navigation';
 	import { ArrowRight, AtSign, AlertCircle } from '@lucide/svelte/icons';
 	import type { PageProps } from './$types.js';
+	import BackButton from '$lib/components/BackButton.svelte';
 
 	let email = $state('');
 	let emailValid = $derived(email.trim().length > 0 && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email));
@@ -12,6 +13,7 @@
 	let { form }: PageProps = $props();
 </script>
 
+<BackButton />
 <div
 	class="row-span-full row-start-2 -mt-40 flex flex-col justify-center space-y-6 text-left sm:row-start-2 sm:mt-0 sm:justify-normal md:mx-0"
 >
@@ -34,18 +36,20 @@
 			};
 		}}
 		method="POST"
-		class="flex w-sm max-w-lg flex-col space-y-6 sm:w-lg"
+		class="xs-width flex w-sm max-w-lg flex-col space-y-6 sm:w-lg"
 	>
 		<label class="label">
 			<span class="label-text"> E-post </span>
 			<div class="relative">
 				<input
-					type="email"
+					type="text"
 					id="email"
 					name="email"
 					class="input"
 					bind:value={email}
 					oninput={() => (attemptedSubmit = false)}
+					class:border-red-500!={(attemptedSubmit && !emailValid) || form?.errors?.email}
+					class:border-2!={(attemptedSubmit && !emailValid) || form?.errors?.email}
 				/>
 				{#if (attemptedSubmit && !emailValid) || form?.errors.email}
 					<AlertCircle
@@ -72,3 +76,11 @@
 		</button>
 	</form>
 </div>
+
+<style>
+	@media (max-width: 425px) {
+		.xs-width {
+			width: 20rem;
+		}
+	}
+</style>
