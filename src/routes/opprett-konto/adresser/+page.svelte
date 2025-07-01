@@ -3,6 +3,7 @@
 	import AdresserTimeout from '$lib/components/adresser/adresser-timeout.svelte';
 	import AdresserVenter from '$lib/components/adresser/adresser-venter.svelte';
 	import { onMount } from 'svelte';
+	import * as rudderanalytics from 'rudder-sdk-js';
 
 	let status: 'fetching' | 'success' | 'timeout' = $state('fetching');
 	let data = $state();
@@ -20,42 +21,12 @@
 		} catch (err) {
 			status = 'timeout';
 		}
+		rudderanalytics.track('Onboarding Completed - At Adresse Page', {
+			page: 'Adresse',
+			status: status,
+		});
 	});
 </script>
-
-<svelte:head>
-	<!-- Meta Pixel Code -->
-	<script>
-		!(function (f, b, e, v, n, t, s) {
-			if (f.fbq) return;
-			n = f.fbq = function () {
-				n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments);
-			};
-			if (!f._fbq) f._fbq = n;
-			n.push = n;
-			n.loaded = !0;
-			n.version = '2.0';
-			n.queue = [];
-			t = b.createElement(e);
-			t.async = !0;
-			t.src = v;
-			s = b.getElementsByTagName(e)[0];
-			s.parentNode.insertBefore(t, s);
-		})(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
-		fbq('init', '1154671612146763');
-		fbq('track', 'PageView');
-	</script>
-	<noscript>
-		<img
-			alt="Facebook Pixel"
-			height="1"
-			width="1"
-			style="display:none"
-			src="https://www.facebook.com/tr?id=1154671612146763&ev=PageView&noscript=1"
-		/>
-	</noscript>
-	<!-- End Meta Pixel Code -->
-</svelte:head>
 
 <div
 	class="row-span-full row-start-2 mx-10 -mt-50 flex flex-col justify-center space-y-6 text-left sm:row-start-2 sm:mt-0 sm:justify-normal md:mx-0"
