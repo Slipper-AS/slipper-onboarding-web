@@ -4,7 +4,7 @@
 	import { afterNavigate } from '$app/navigation';
 	import { onMount } from 'svelte';
 	import CookieBanner from '$lib/components/CookieBanner.svelte';
-	import { env } from '$env/dynamic/private';
+	import { env } from '$env/dynamic/public';
 
 	let { children } = $props();
 	let rudderanalytics;
