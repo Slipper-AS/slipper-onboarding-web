@@ -26,6 +26,7 @@
 				</p>
 				<button
 					onclick={() => goto('/opprett-konto/')}
+					name="opprett-konto"
 					class="bg-secondary-500 hover:bg-secondary-600 lg-14 mt-6 flex cursor-pointer items-center justify-between rounded-full px-5 py-3 text-center lg:w-sm"
 				>
 					<span class="flex-1 text-lg text-black">Kom i gang</span>

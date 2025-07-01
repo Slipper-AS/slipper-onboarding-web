@@ -1,10 +1,12 @@
 <script lang="ts">
+	import BackButton from '$lib/components/BackButton.svelte';
 	import { ArrowRight } from '@lucide/svelte/icons';
 
 	let phone = '';
 	$: phoneIsValid = /^\d{8}$/.test(phone);
 </script>
 
+<BackButton />
 <div
 	class="row-span-full row-start-2 m-10 flex flex-col justify-center space-y-6 pb-20 text-left sm:justify-normal md:mx-0"
 >

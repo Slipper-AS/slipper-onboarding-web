@@ -6,7 +6,7 @@
 
 	let { form }: PageProps = $props();
 
-	const placeholder = 'dd.mm.yyyy';
+	const placeholder = 'dd.mm.åååå';
 	let attemptedSubmit = $state(false);
 
 	let firstname = $state('');
@@ -97,7 +97,7 @@
 				}
 			};
 		}}
-		class="flex w-sm max-w-lg flex-col sm:w-lg"
+		class="xs-width flex w-sm max-w-lg flex-col sm:w-lg"
 	>
 		<div class="mb-10 space-y-4">
 			<label class="label">
@@ -221,5 +221,11 @@
 
 	.filled-mask {
 		color: transparent;
+	}
+
+	@media (max-width: 425px) {
+		.xs-width {
+			width: 20rem;
+		}
 	}
 </style>
