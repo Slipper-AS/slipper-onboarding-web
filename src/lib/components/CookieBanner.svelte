@@ -7,13 +7,27 @@
 		if (!consent) visible = true;
 	});
 
-	function acceptCookies() {
+	async function acceptCookies() {
 		localStorage.setItem('cookie_consent', 'granted');
 
 		window.gtag('event', 'consent', {
 			ad_storage: 'granted',
 			analytics_storage: 'granted',
 		});
+
+		const rudderanalytics = await import('rudder-sdk-js');
+		if (
+			import.meta.env.PUBLIC_WRITE_KEY_RUDDERSTACK &&
+			import.meta.env.PUBLIC_DATA_PLANE_URI_RUDDERSTACK
+		) {
+			rudderanalytics.load(
+				import.meta.env.PUBLIC_WRITE_KEY_RUDDERSTACK,
+				import.meta.env.PUBLIC_DATA_PLANE_URI_RUDDERSTACK
+			);
+			rudderanalytics.page('Onboarding Loaded'); // Track initial page view
+		} else {
+			console.warn('RudderStack write key is not defined');
+		}
 
 		visible = false;
 	}
