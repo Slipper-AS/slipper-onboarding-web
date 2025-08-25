@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { PUBLIC_WRITE_KEY_RUDDERSTACK, PUBLIC_DATA_PLANE_URI_RUDDERSTACK } from '$env/static/public';
+	import { page } from '$lib/services/analytics';
 	let visible = false;
 
 	onMount(() => {
@@ -16,20 +16,8 @@
 			analytics_storage: 'granted',
 		});
 
-		// Only initialize RudderStack in production to avoid CORS issues in development
-		if (!import.meta.env.DEV && PUBLIC_WRITE_KEY_RUDDERSTACK && PUBLIC_DATA_PLANE_URI_RUDDERSTACK) {
-			const { RudderAnalytics } = await import('@rudderstack/analytics-js');
-			const rudderAnalytics = new RudderAnalytics();
-			rudderAnalytics.load(
-				PUBLIC_WRITE_KEY_RUDDERSTACK,
-				PUBLIC_DATA_PLANE_URI_RUDDERSTACK
-			);
-			rudderAnalytics.page('Onboarding Loaded'); // Track initial page view
-		} else if (import.meta.env.DEV) {
-			console.log('RudderStack disabled in development mode');
-		} else {
-			console.warn('RudderStack write key is not defined');
-		}
+		// Track page view using analytics service
+		await page('Onboarding Loaded');
 
 		visible = false;
 	}
