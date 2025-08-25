@@ -13,16 +13,17 @@
 
 		if (localStorage.getItem('cookie_consent') === 'granted') {
 			// Initialize RudderStack
-			const rudderanalytics = await import('rudder-sdk-js');
+			const { RudderAnalytics } = await import('@rudderstack/analytics-js');
 			if (
 				import.meta.env.PUBLIC_WRITE_KEY_RUDDERSTACK &&
 				import.meta.env.PUBLIC_DATA_PLANE_URI_RUDDERSTACK
 			) {
-				rudderanalytics.load(
+				const rudderAnalytics = new RudderAnalytics();
+				rudderAnalytics.load(
 					import.meta.env.PUBLIC_WRITE_KEY_RUDDERSTACK,
 					import.meta.env.PUBLIC_DATA_PLANE_URI_RUDDERSTACK
 				);
-				rudderanalytics.page('Onboarding Loaded'); // Track initial page view
+				rudderAnalytics.page('Onboarding Loaded'); // Track initial page view
 			} else {
 				console.warn('RudderStack write key is not defined');
 			}

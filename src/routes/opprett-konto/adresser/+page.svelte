@@ -3,7 +3,7 @@
 	import AdresserTimeout from '$lib/components/adresser/adresser-timeout.svelte';
 	import AdresserVenter from '$lib/components/adresser/adresser-venter.svelte';
 	import { onMount } from 'svelte';
-	import * as rudderanalytics from 'rudder-sdk-js';
+	import { RudderAnalytics } from '@rudderstack/analytics-js';
 
 	let status: 'fetching' | 'success' | 'timeout' = $state('fetching');
 	let data = $state([]);
@@ -28,7 +28,8 @@
 		} catch (err) {
 			status = 'timeout';
 		}
-		rudderanalytics.track('Onboarding Completed - At Adresse Page', {
+		const rudderAnalytics = new RudderAnalytics();
+		rudderAnalytics.track('Onboarding Completed - At Adresse Page', {
 			page: 'Adresse',
 			status: status,
 		});
