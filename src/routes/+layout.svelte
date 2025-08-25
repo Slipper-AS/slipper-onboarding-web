@@ -12,10 +12,8 @@
 		// Send pageview on initial load
 		gtag('event', 'page_view', { page_path: location.pathname });
 
-		// Track page view if consent is granted
-		if (localStorage.getItem('cookie_consent') === 'granted') {
-			await page('Onboarding Loaded');
-		}
+		// Track page view (analytics service will check consent internally)
+		await page('Onboarding Loaded');
 	});
 
 	afterNavigate(() => {

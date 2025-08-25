@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { page } from '$lib/services/analytics';
+	import { page, reinitializeOnConsent } from '$lib/services/analytics';
 	let visible = false;
 
 	onMount(() => {
@@ -16,6 +16,9 @@
 			analytics_storage: 'granted',
 		});
 
+		// Reinitialize analytics service with consent granted
+		await reinitializeOnConsent();
+		
 		// Track page view using analytics service
 		await page('Onboarding Loaded');
 

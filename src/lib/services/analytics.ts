@@ -13,6 +13,13 @@ async function initialize(): Promise<void> {
 		return;
 	}
 
+	// Check for user consent before initializing
+	const consent = localStorage.getItem('cookie_consent');
+	if (consent !== 'granted') {
+		console.log('RudderStack analytics initialization skipped - user consent not granted');
+		return;
+	}
+
 	// Check if we have the required configuration
 	if (!PUBLIC_WRITE_KEY_RUDDERSTACK || !PUBLIC_DATA_PLANE_URI_RUDDERSTACK) {
 		console.warn('RudderStack configuration is missing');
@@ -34,7 +41,13 @@ async function initialize(): Promise<void> {
 
 function ensureInitialized(): Promise<void> {
 	if (!initializationPromise) {
-		initializationPromise = initialize();
+		initializationPromise = initialize().catch(err => {
+			console.error('Analytics initialization failed', err);
+			// Clear the promise so subsequent calls can retry
+			initializationPromise = null;
+			// Re-throw the error to preserve behavior for the current caller
+			throw err;
+		});
 	}
 	return initializationPromise;
 }
@@ -77,4 +90,13 @@ export async function reset(): Promise<void> {
 	} else if (import.meta.env.DEV && browser) {
 		console.log('RudderStack reset (dev mode)');
 	}
+}
+
+export async function reinitializeOnConsent(): Promise<void> {
+	// Reset the initialization promise to force re-initialization
+	initializationPromise = null;
+	rudderAnalyticsInstance = null;
+	
+	// Re-initialize with the new consent status
+	await ensureInitialized();
 }
