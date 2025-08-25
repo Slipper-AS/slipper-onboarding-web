@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
+	import { page, reinitializeOnConsent } from '$lib/services/analytics';
 	let visible = false;
 
 	onMount(() => {
@@ -15,19 +16,11 @@
 			analytics_storage: 'granted',
 		});
 
-		const rudderanalytics = await import('rudder-sdk-js');
-		if (
-			import.meta.env.PUBLIC_WRITE_KEY_RUDDERSTACK &&
-			import.meta.env.PUBLIC_DATA_PLANE_URI_RUDDERSTACK
-		) {
-			rudderanalytics.load(
-				import.meta.env.PUBLIC_WRITE_KEY_RUDDERSTACK,
-				import.meta.env.PUBLIC_DATA_PLANE_URI_RUDDERSTACK
-			);
-			rudderanalytics.page('Onboarding Loaded'); // Track initial page view
-		} else {
-			console.warn('RudderStack write key is not defined');
-		}
+		// Reinitialize analytics service with consent granted
+		await reinitializeOnConsent();
+		
+		// Track page view using analytics service
+		await page('Onboarding Loaded');
 
 		visible = false;
 	}

@@ -12,7 +12,7 @@
 		<div class=" grid h-full max-h-full max-w-md grid-rows-6 sm:grid-rows-3">
 			{#if data.hasReferrer}
 				<div class="row-start-1 mx-10 mt-10 flex flex-col items-center md:mx-0">
-					<ReferalPill name={data.referrer} />
+					<ReferalPill name={data.referrer || undefined} />
 				</div>
 			{/if}
 			{@render children()}
