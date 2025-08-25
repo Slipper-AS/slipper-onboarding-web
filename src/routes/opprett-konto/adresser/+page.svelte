@@ -29,11 +29,16 @@
 			status = 'timeout';
 		}
 		
-		// Only track analytics on the client side
-		if (browser) {
+		// Only track analytics on the client side and in production
+		if (browser && !import.meta.env.DEV) {
 			const { RudderAnalytics } = await import('@rudderstack/analytics-js');
 			const rudderAnalytics = new RudderAnalytics();
 			rudderAnalytics.track('Onboarding Completed - At Adresse Page', {
+				page: 'Adresse',
+				status: status,
+			});
+		} else if (import.meta.env.DEV) {
+			console.log('RudderStack tracking disabled in development:', {
 				page: 'Adresse',
 				status: status,
 			});
