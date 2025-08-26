@@ -11,7 +11,7 @@
 	}
 </script>
 
-<div class="m-10 flex items-center md:mx-0">
+<div class="absolute m-10 mt-30 flex items-center md:mx-0">
 	<button onclick={goBack} class="flex items-center gap-3 hover:underline">
 		<MoveLeft />
 		<span>Tilbake</span>
