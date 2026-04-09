@@ -1,3 +1,4 @@
+import { dev } from '$app/environment';
 import { redirect } from '@sveltejs/kit';
 import type { PageServerLoad } from './$types';
 import { COOKIE_KEYS } from '$lib/cookies';
@@ -10,7 +11,7 @@ export const load: PageServerLoad = async ({ url, cookies }) => {
 			path: '/',
 			httpOnly: true,
 			sameSite: 'lax',
-			secure: true,
+			secure: !dev,
 			maxAge: 60 * 60 * 24,
 		});
 

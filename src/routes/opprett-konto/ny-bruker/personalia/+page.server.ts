@@ -76,7 +76,7 @@ export const actions: Actions = {
 					variables: {
 						firstName,
 						lastName,
-						birthDateISO,
+						birthDate: birthDateISO,
 					},
 				}),
 			});

@@ -1,3 +1,4 @@
+import { dev } from '$app/environment';
 import { PUBLIC_API_BASE_URL } from '$env/static/public';
 import { COOKIE_KEYS } from '$lib/cookies';
 import type { PageServerLoad, Actions } from './$types';
@@ -58,7 +59,7 @@ export const actions: Actions = {
 					path: '/',
 					httpOnly: true,
 					sameSite: 'lax',
-					secure: true,
+					secure: !dev,
 					maxAge: 60 * 60,
 				});
 			} else {
