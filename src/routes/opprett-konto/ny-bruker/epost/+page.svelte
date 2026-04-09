@@ -13,6 +13,10 @@
 	let { form }: PageProps = $props();
 </script>
 
+<svelte:head>
+	<link rel="preload" href="/Electric-house.png" as="image" />
+</svelte:head>
+
 <BackButton />
 <div
 	class="row-span-full row-start-2 -mt-40 flex flex-col justify-center space-y-6 text-left sm:row-start-2 sm:mt-0 sm:justify-normal md:mx-0"

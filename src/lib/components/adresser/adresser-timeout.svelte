@@ -3,6 +3,11 @@
 	import { ArrowRight } from '@lucide/svelte/icons';
 </script>
 
+<svelte:head>
+	<link rel="preload" href="/Last-ned-app.png" as="image" />
+	<link rel="preload" href="/Slipper-app-qr-code.png" as="image" />
+</svelte:head>
+
 <img src="/Vi-forhandler.png" alt="Vi Forhandler" class="size-45 self-center sm:size-60" />
 <h1 class="text-3xl">Elhub bruker lang tid</h1>
 <p>

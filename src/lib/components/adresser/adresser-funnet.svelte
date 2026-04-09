@@ -8,6 +8,11 @@
 	let props = $props();
 </script>
 
+<svelte:head>
+	<link rel="preload" href="/Last-ned-app.png" as="image" />
+	<link rel="preload" href="/Slipper-app-qr-code.png" as="image" />
+</svelte:head>
+
 <Lottie
 	animationData={bingoFoundAddresses}
 	classname="size-40 sm:size-60 self-center"

@@ -3,6 +3,11 @@
 	import { ArrowRight } from '@lucide/svelte/icons';
 </script>
 
+<svelte:head>
+	<link rel="preload" href="/Electric-house.png" as="image" />
+	<link rel="preload" href="/access_type_arrow.png" as="image" />
+</svelte:head>
+
 <BackButton />
 <div
 	class="row-start-2 mx-10 flex flex-col space-y-6 pb-20 text-left sm:row-start-2 sm:-mt-10 md:mx-0"

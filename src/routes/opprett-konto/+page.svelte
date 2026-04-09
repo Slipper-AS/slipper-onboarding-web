@@ -7,6 +7,10 @@
 	import { ArrowRight } from '@lucide/svelte/icons';
 </script>
 
+<svelte:head>
+	<link rel="preload" href="/Happy-selfie-man.png" as="image" />
+</svelte:head>
+
 <div class="row-start-2 mx-10 flex flex-col space-y-6 text-left sm:row-start-2 md:mx-0">
 	<img src="/Happy-selfie-man.png" alt="Happy Selfie Man" class="h-[124px] w-[200px] self-center" />
 	<h1 class="text-3xl">Lag en konto og kom i gang</h1>
