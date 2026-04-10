@@ -3,32 +3,32 @@
 		PUBLIC_REDIRECT_SLIPPER_APPSTORE_URL,
 		PUBLIC_REDIRECT_SLIPPER_PLAYSTORE_URL,
 	} from '$env/static/public';
-	import { ArrowRight, Zap, HandCoins, TrendingUpDown, Users } from '@lucide/svelte/icons';
+	import { ArrowRight, Zap, HandCoins, FileSearch, PiggyBank } from '@lucide/svelte/icons';
 
 	const slipperInfo = [
 		{
 			id: 1,
-			icon: Zap,
-			title: 'Spar penger',
-			description: 'Bytt til en billigere strømavtale enkelt',
+			icon: HandCoins,
+			title: 'Billigste strømavtale',
+			description: 'Se hvilke avtaler som er billigst for deg, og bytt når det lønner seg',
 		},
 		{
 			id: 2,
-			icon: HandCoins,
-			title: 'Spar strøm',
-			description: 'Bruk strømmen når den koster minst',
+			icon: FileSearch,
+			title: 'Full oversikt',
+			description: 'Full oversikt over forbruk, priser, nettleie, norgespris og mer',
 		},
 		{
 			id: 3,
-			icon: TrendingUpDown,
-			title: 'Sjekk dine abonnementer',
-			description: 'Se spotprisprognose 7 dager frem i tid',
+			icon: Zap,
+			title: 'Bruk strøm smart',
+			description: 'Ta valg som fører til lavere strømpris og kostnader',
 		},
 		{
 			id: 4,
-			icon: Users,
-			title: 'Sjekk dine abonnementer',
-			description: 'Vær med og bestem hva vi bygger i appen',
+			icon: PiggyBank,
+			title: 'Se hva du sparer',
+			description: 'Se sparingen vokse, dag for dag',
 		},
 	];
 	const userAgent = $state(navigator.userAgent);
