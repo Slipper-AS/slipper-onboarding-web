@@ -190,8 +190,8 @@
 			aria-disabled={!firstnameValid || !lastnameValid || !dobValid}
 			class="form-next-button"
 		>
-			<span class="flex-1 text-lg"> Fortsett </span>
-			<span class="ml-auto"> <ArrowRight class="size-7" /> </span>
+			<span class="text-lg"> Fortsett </span>
+			<span class="absolute right-4"> <ArrowRight class="size-7" /> </span>
 		</button>
 		{#if form?.errors?.result}
 			<p class="mt-4 text-sm text-red-500">{form.errors.result}</p>

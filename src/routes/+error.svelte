@@ -28,10 +28,10 @@
 				</div>
 				<button
 					onclick={() => goto('/')}
-					class="bg-secondary-500 hover:bg-secondary-600 mt-4 flex w-full cursor-pointer items-center justify-between rounded-full px-5 py-3 text-center sm:w-2xs"
+					class="bg-secondary-500 hover:bg-secondary-600 relative mt-4 flex w-full cursor-pointer items-center justify-center rounded-full px-5 py-3 text-center sm:w-2xs"
 				>
-					<span class="text-md flex-1 font-normal text-black">Tilbake til forsiden</span>
-					<span class="ml-auto text-black"> <Undo2 strokeWidth="2" /> </span>
+					<span class="text-md font-normal text-black">Tilbake til forsiden</span>
+					<span class="absolute right-5 text-black"> <Undo2 strokeWidth="2" /> </span>
 				</button>
 			</div>
 

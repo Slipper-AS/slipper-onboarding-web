@@ -90,8 +90,8 @@
 			type="submit"
 			disabled={pinInput.value.length !== pinInput.maxLength}
 		>
-			<span class="flex-1 text-lg"> Bekreft </span>
-			<span class="ml-auto"> <ArrowRight class="size-7" /> </span>
+			<span class="text-lg"> Bekreft </span>
+			<span class="absolute right-4"> <ArrowRight class="size-7" /> </span>
 		</button>
 	</form>
 </div>

@@ -30,8 +30,8 @@
 			</div>
 		</label>
 		<button class="form-next-button" type="submit" disabled={!phoneIsValid}>
-			<span class="flex-1 text-lg"> Fortsett </span>
-			<span class="ml-auto"> <ArrowRight class="size-7" /> </span>
+			<span class="text-lg"> Fortsett </span>
+			<span class="absolute right-4"> <ArrowRight class="size-7" /> </span>
 		</button>
 	</form>
 </div>

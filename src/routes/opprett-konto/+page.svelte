@@ -20,10 +20,10 @@
 			window.location.href = PUBLIC_REDIRECT_VIPPS_URL;
 		}}
 		name="vipps-login-button"
-		class="bg-warning-500 hover:bg-warning-600 flex w-full items-center justify-between rounded-full px-4 py-3 text-white transition duration-200"
+		class="bg-warning-500 hover:bg-warning-600 relative flex w-full items-center justify-center rounded-full px-4 py-3 text-white transition duration-200"
 	>
-		<span class="flex-1 text-lg"> Logg inn med Vipps</span>
-		<span class="ml-auto"> <ArrowRight class="size-7" /> </span>
+		<span class="text-lg">Logg inn med Vipps</span>
+		<span class="absolute right-4"> <ArrowRight class="size-7" /> </span>
 	</button>
 	<a href="opprett-konto/ny-bruker/telefonnummer" class="self-center text-gray-300 underline"
 		>Har du ikke Vipps?</a

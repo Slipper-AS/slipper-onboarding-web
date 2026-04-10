@@ -11,13 +11,13 @@
 			id: 1,
 			icon: HandCoins,
 			title: 'Billigste strømavtale',
-			description: 'Se hvilke avtaler som er billigst for deg, og bytt når det lønner seg',
+			description: 'Finn billigste avtale for deg, og bytt hver gang det lønner seg',
 		},
 		{
 			id: 2,
 			icon: FileSearch,
 			title: 'Full oversikt',
-			description: 'Full oversikt over forbruk, priser, nettleie, norgespris og mer',
+			description: 'Innsikt i forbruk, priser, nettleie, norgespris og mer',
 		},
 		{
 			id: 3,
@@ -46,7 +46,8 @@
 </script>
 
 <div
-	class="row-span-full m-10 flex min-h-[calc(100dvh-5rem)] flex-col justify-center space-y-6 text-left md:mx-0 {page.data.hasReferrer
+	class="row-span-full m-10 flex min-h-[calc(100dvh-5rem)] flex-col justify-center space-y-6 text-left md:mx-0 {page
+		.data.hasReferrer
 		? 'row-start-2'
 		: 'row-start-1'}"
 >
@@ -76,11 +77,11 @@
 	</ul>
 	{#if isAndroid || isIOS}
 		<button
-			class="bg-secondary-500 hover:bg-secondary-600 flex w-full items-center justify-between rounded-full px-4 py-3 text-black"
+			class="bg-secondary-500 hover:bg-secondary-600 relative flex w-full items-center justify-center rounded-full px-4 py-3 text-black"
 			onclick={handleDownload}
 		>
-			<span class="flex-1 text-lg"> Last ned appen </span>
-			<span class="ml-auto"> <ArrowRight class="size-7" /> </span>
+			<span class="text-lg"> Last ned appen </span>
+			<span class="absolute right-4"> <ArrowRight class="size-7" /> </span>
 		</button>
 	{/if}
 </div>
