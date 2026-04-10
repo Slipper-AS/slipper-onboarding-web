@@ -3,6 +3,7 @@
 		PUBLIC_REDIRECT_SLIPPER_APPSTORE_URL,
 		PUBLIC_REDIRECT_SLIPPER_PLAYSTORE_URL,
 	} from '$env/static/public';
+	import { page } from '$app/state';
 	import { ArrowRight, Zap, HandCoins, FileSearch, PiggyBank } from '@lucide/svelte/icons';
 
 	const slipperInfo = [
@@ -45,10 +46,16 @@
 </script>
 
 <div
-	class="screen-padding row-span-full row-start-2 mx-10 flex flex-col space-y-6 text-left sm:row-start-2 md:mx-0"
+	class="row-span-full m-10 flex min-h-[calc(100dvh-5rem)] flex-col justify-center space-y-6 text-left md:mx-0 {page.data.hasReferrer
+		? 'row-start-2'
+		: 'row-start-1'}"
 >
 	{#if isAndroid || isIOS}
-		<img src="/Last-ned-app.png" alt="iPhones" class="responsive-img size-60 self-center" />
+		<img
+			src="/three_screens.png"
+			alt="iPhones"
+			class="h-auto w-[clamp(18rem,40dvh,28rem)] max-w-full self-center"
+		/>
 	{:else}
 		<div class="flex flex-col items-center space-y-0">
 			<img src="/Slipper-app-qr-code.png" alt="QR Code" class="size-60 self-center" />
@@ -59,10 +66,10 @@
 	<ul>
 		{#each slipperInfo as infoPoint}
 			{@const Icon = infoPoint.icon}
-			<li class="mb-4">
+			<li class="mb-6">
 				<div class="flex items-center space-x-4">
-					<Icon class="text-secondary-500 size-6" />
-					<p class="text-base">{infoPoint.description}</p>
+					<Icon class="text-secondary-500 size-6 shrink-0" />
+					<p class="text-base leading-tight">{infoPoint.description}</p>
 				</div>
 			</li>
 		{/each}
@@ -77,16 +84,3 @@
 		</button>
 	{/if}
 </div>
-
-<style>
-	@media (max-width: 380px) {
-		.responsive-img {
-			width: 10rem;
-			height: 10rem;
-		}
-
-		.screen-padding {
-			height: 101vh;
-		}
-	}
-</style>

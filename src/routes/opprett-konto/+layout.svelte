@@ -7,7 +7,7 @@
 	}: { children: () => any; data: { hasReferrer: boolean; referrer: string | null } } = $props();
 </script>
 
-<main class="h-screen max-h-screen">
+<main class="min-h-dvh">
 	<div class="flex h-full flex-col items-center">
 		<div class=" grid h-full max-h-full max-w-md grid-rows-6 sm:grid-rows-3">
 			{#if data.hasReferrer}

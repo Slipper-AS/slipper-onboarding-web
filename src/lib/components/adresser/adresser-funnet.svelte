@@ -9,7 +9,7 @@
 </script>
 
 <svelte:head>
-	<link rel="preload" href="/Last-ned-app.png" as="image" />
+	<link rel="preload" href="/three_screens.png" as="image" />
 	<link rel="preload" href="/Slipper-app-qr-code.png" as="image" />
 </svelte:head>
 
